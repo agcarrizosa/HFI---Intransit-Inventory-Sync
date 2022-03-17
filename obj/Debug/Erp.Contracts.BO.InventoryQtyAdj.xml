@@ -1,0 +1,1502 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Erp.Contracts.BO.InventoryQtyAdj</name>
+    </assembly>
+    <members>
+        <member name="T:Erp.BO.InventoryQtyAdjDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjDataSet.InventoryQtyAdjDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjDataSet.LegalNumGenOptsDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjDataSet.SelectedSerialNumbersDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjDataSet.SNFormatDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjDataSet.InventoryQtyAdjRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjDataSet.LegalNumGenOptsRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjDataSet.SelectedSerialNumbersRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjDataSet.SNFormatRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjDataSet.InventoryQtyAdjRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjDataSet.LegalNumGenOptsRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjDataSet.SelectedSerialNumbersRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjDataSet.SNFormatRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjBrwDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjBrwDataSet.InventoryQtyAdjBrwDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjBrwDataSet.InventoryQtyAdjBrwRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjBrwDataSet.InventoryQtyAdjBrwRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjListDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjListDataSet.InventoryQtyAdjListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjListDataSet.InventoryQtyAdjListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.InventoryQtyAdjListDataSet.InventoryQtyAdjListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Erp.BO.SelectSerialNumbersParamsDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.SelectSerialNumbersParamsDataSet.SelectSerialNumbersParamsDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.SelectSerialNumbersParamsDataSet.SelectSerialNumbersParamsRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Erp.BO.SelectSerialNumbersParamsDataSet.SelectSerialNumbersParamsRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Erp.Contracts.InventoryQtyAdjSvcContract">
+            <summary>
+            Temporary datatables allow the user to enter data for
+            the quantity adjustments, serial numbers selected and
+            serial number formats.
+            </summary>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.CheckSN(System.String,System.String,System.String,System.Boolean@)">
+            <summary>
+            Determines if serial numbers are required for this transaction
+            </summary>
+            <param name="partNum">Part Number</param>
+            <param name="warehouseCode">Warehouse Code</param>
+            <param name="ipPCID">PCID</param>
+            <param name="serialNumbersRequired">Serial Numbers Required Flag</param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.CheckSNFSA(System.String,System.String,System.String,System.String,System.Boolean@)">
+            <summary>
+            </summary>
+            <param name="partNum"></param>
+            <param name="warehouseCode"></param>
+            <param name="binNum"></param>
+            <param name="ipPCID">PCID</param>
+            <param name="serialNumbersRequired"></param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.GetPCIDAdjustmentInfo(System.String,System.Boolean,Erp.Tablesets.InventoryQtyAdjTableset@,Erp.Tablesets.InventoryQtyAdjBrwTableset@)">
+            <summary>
+            Gets the InventoryQtyAdj and InventoryQtyAdjBrw datasets for the specified PCID.
+            </summary>
+            <param name="pcid">A PCID that has parts to be adjusted</param>
+            <param name="doStatusValidations">True if the status of the PCID should be validated</param>
+            <param name="inventoryQtyAdj">The main InventoryQtyAdj dataset</param>
+            <param name="inventoryQtyAdjBrw">The InventoryQtyAdjBrw dataset containing the items in the PCID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.GetInventoryQtyAdjPCID(System.String,System.String,System.String)">
+            <summary>
+            Gets the default values for the InventoryQtyAdj data table based on the PCID entered.
+            </summary>
+            <param name="partnumber">Part number to adjust.</param>
+            <param name="uomCode">UOM Code (only used for Product Codes)</param>
+            <param name="pcid">The parent PCID</param>
+            <returns>Inventory qty adj data set</returns>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.GetInventoryQtyAdj(System.String,System.String)">
+            <summary>
+            Gets the default values for the InventoryQtyAdj data table based on the part
+            number entered.
+            </summary>
+            <param name="partnumber">Part number to adjust.</param>
+            <param name="uomCode"> UOM Code (only used for Product Codes)</param>
+            <returns>Inventory qty adj data set</returns>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.GetInventoryQtyAdjBrwInclManaged(System.String,System.String,System.String@)">
+            <summary>
+            Gets the default values for the browse section of the adjustment screen (including SMI inventory)
+            </summary>
+            <param name="partNum">Part number for the adjustment.</param>
+            <param name="wareHouseCode">Warehouse code used to get bin information.</param>
+            <param name="primaryBin">Part Warehouse's Primary Bin.</param>
+            <returns>Browse for inventory qty adj data set</returns>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.GetInventoryQtyAdjBrwInclPCID(System.String,System.Int32,System.String,System.String@)">
+            <summary>
+            Gets the default values for the browse section of the adjustment screen (excluding SMI inventory and including PCID)
+            </summary>
+            <param name="partNum">Part number for the adjustment.</param>
+            <param name="attributeSetID">Attribute Set ID used to get bin information. Bins are not filtered by Attribute Set ID if a zero is sent</param>
+            <param name="wareHouseCode">Warehouse code used to get bin information.</param>
+            <param name="primaryBin">Part Warehouse's Primary Bin.</param>
+            <returns>Browse for inventory qty adj data set</returns>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.GetInventoryQtyAdjBrw(System.String,System.Int32,System.String,System.String@)">
+            <summary>
+            Gets the default values for the browse section of the adjustment screen (excluding SMI inventory)
+            </summary>
+            <param name="partNum">Part number for the adjustment.</param>
+            <param name="attributeSetID">Attribute Set ID used to get bin information. Bins are not filtered by Attribute Set ID if a zero is sent</param>
+            <param name="wareHouseCode">Warehouse code used to get bin information.</param>
+            <param name="primaryBin">Part Warehouse's Primary Bin.</param>
+            <returns>Browse for inventory qty adj data set</returns>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.GetPartXRefInfo(System.String@,System.String,System.String,System.String@,System.String@,System.String@,System.Boolean@)">
+            <summary>
+            This method defaults PartAdvisor fields when the PartNum field changes
+            </summary>
+            <param name="partNum"> Proposed PartNumber change</param>
+            <param name="sysRowID"> RowID of the selected record. Skips find part logic if this has a value. </param>
+            <param name="rowType"> RowType of the selected record. Only used with sysRowID. </param>
+            <param name="uomCode"> UOM Code (only used for Product Codes)</param>
+            <param name="serialWarning">Warning message if the InvTransfer line contains serial numbers</param>
+            <param name="questionString">If the part is being changed to something different than what was on the order, ask if the user wants to continue </param>
+            <param name="multipleMatch"> Multiple matches were found by FindPart </param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.GetSelectSerialNumbersParams(System.String,System.String,System.String,System.Decimal,System.String,System.String,System.Guid,System.String,System.String)">
+            <summary>
+            Gets parameters required for launching Select Serial Numbers
+            </summary>
+            <param name="ipCompany"></param>
+            <param name="ipWareHseCode"></param>
+            <param name="ipPartNum"></param>
+            <param name="ipAdjustQuantity"></param>
+            <param name="ipBinNum"></param>
+            <param name="ipUnitOfMeasure"></param>
+            <param name="ipSysRowID"></param>
+            <param name="ipPCID"></param>
+            <param name="ipLotNum"></param>
+            <returns>The SelectSerialNumbersParams dataset</returns>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.KitPartStatus(System.String,System.String@)">
+            <summary>
+            Checks Part's type and returns warning message if the part is a Sales Kit.
+            </summary>
+            <param name="partNum">Part number.</param>
+            <param name="kitMessage">Message to warn that Kits shouldn't have stock quantities.</param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.PreSetInventoryQtyAdj(Erp.Tablesets.InventoryQtyAdjTableset@,System.Boolean@)">
+             <summary>
+             This method performs multiple functions:
+             This method will return a record in the LegalNumGenOpts datatable if
+             a legal number is required for this transaction.
+             The RequiresUserInput
+             flag will indicate if this legal number requires input from the user.  If
+             it does, the LegalNumberPrompt business objects needs to be called to
+             gather that information.  This method should be called when the user
+             saves the record but before the Update method is called.
+            
+             And will auto select serial numbers if the adjustment is from a PCID and the entire PCID PartBin qty is being adjusted out.
+             </summary>
+             <param name="ds">Inventory qty adj data set</param>
+             <param name="requiresUserInput">Indicates if the legal number requires user input </param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.SetInventoryQtyAdj(Erp.Tablesets.InventoryQtyAdjTableset@,System.String@)">
+            <summary>
+            Create Part Tran records from the Inventory QtyAdj dataset. If Serial numbers
+            are entered, SerialNo records and SNTran records are created.  If the Serial
+            number format is changed, the Part table will be updated with the information
+            provided in the SNFormat data table.
+            </summary>
+            <param name="ds">Inventory qty adj data set</param>
+            <param name="partTranPKs">Inventory qty adj data set</param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.ValidateSN(Erp.Tablesets.InventoryQtyAdjTableset@,System.String,System.Boolean@)">
+            <summary>
+            Validates that a single serial number is valid for this transaction
+            </summary>
+            <param name="ds">Inventory qty adj data set</param>
+            <param name="serialNumber">Serial number to validate.</param>
+            <param name="isVoided">Serial Number Voided flag</param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.GetAvailTranDocTypes(System.String@)">
+            <summary>
+            Method to call to get available tran doc types.
+            </summary>
+            <param name="AvailTypes">The available tran doc types</param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.NegativeInventoryTest(System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,System.Int32,System.Decimal,System.String@,System.String@)">
+            <summary>
+            </summary>
+            <param name="pcPartNum"></param>
+            <param name="pcWhseCode"></param>
+            <param name="pcBinNum"></param>
+            <param name="pcLotNum"></param>
+            <param name="pcAttributeSetID"></param>
+            <param name="pcPCID"></param>
+            <param name="pcDimCode"></param>
+            <param name="pdDimConvFactor"></param>
+            <param name="ipSellingQuantity"></param>
+            <param name="pcNeqQtyAction"></param>
+            <param name="pcMessage"></param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.FindPart(System.String,System.String@,System.String@,System.String@)">
+            <summary>
+            </summary>
+            <param name="ipPartNum"></param>
+            <param name="opPartNum"></param>
+            <param name="opUOM"></param>
+            <param name="opMatchType"></param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.GetPartFromRowID(System.String,System.String,System.String@,System.String@)">
+            <summary>
+            </summary>
+            <param name="ipRowType"></param>
+            <param name="ipRowID"></param>
+            <param name="opPartNum"></param>
+            <param name="opUOM"></param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.ChangeUOM(System.String,Erp.Tablesets.InventoryQtyAdjTableset@)">
+            <summary>
+            </summary>
+            <param name="UOM"></param>
+            <param name="ds"></param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.OnChangeUnitOfMeasure(System.String,Erp.Tablesets.InventoryQtyAdjTableset@)">
+            <summary>
+            Validates that the unit of measure entered is valid
+            </summary>
+            <param name="ium">The proposed unit of measure</param>
+            <param name="ds">The Inventory Qty Adj dataset to validate the unit of measure against</param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.OnChangeLotNum(System.String,Erp.Tablesets.InventoryQtyAdjTableset@)">
+            <summary>
+            Validates that the lotNum entered is valid
+            </summary>
+            <param name="lotNum">The proposed lot number</param>
+            <param name="ds">The Inventory Qty Adj dataset to validate the lot number against</param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.OnChangePCID(System.String,Erp.Tablesets.InventoryQtyAdjTableset@)">
+            <summary>
+            Validates that the PCID entered is valid
+            </summary>
+            <param name="pcid">The proposed PCID number</param>
+            <param name="ds">The Inventory Qty Adj dataset to validate the PCID against</param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.OnChangingAdjustQuantity(System.Decimal,Erp.Tablesets.InventoryQtyAdjTableset@)">
+            <summary>
+            Logic for when the adjust quantity is changing
+            </summary>
+            <param name="adjustQuantity"></param>
+            <param name="ds"></param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.OnChangingUnitOfMeasure(System.String,Erp.Tablesets.InventoryQtyAdjTableset@)">
+            <summary>
+            Logic for when the unit of measure is changing
+            </summary>
+            <param name="unitOfMeasure"></param>
+            <param name="ds"></param>
+        </member>
+        <member name="M:Erp.Contracts.InventoryQtyAdjSvcContract.OnChangingNumberOfPieces(System.Decimal,Erp.Tablesets.InventoryQtyAdjTableset@)">
+            <summary>
+            Logic for when the number of pieces is changing
+            </summary>
+            <param name="numberOfPieces"></param>
+            <param name="ds"></param>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.Company">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.PartNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.WareHseCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.OnHandQty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.BinNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.AdjustQuantity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.ReasonCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.LotNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.Reference">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.UnitOfMeasure">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.TransDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.ReasonType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.SerialNoQty">
+            <summary>
+            Total Serial number quantity
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.TempSerialNo">
+            <summary>
+            Temporary serial number
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.ReasonCodeReq">
+            <summary>
+            Reason code required flag
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.AllowNegQty">
+            <summary>
+            Determines if inventory level can be driven below zero.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.LegalNumberMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.StkUOMCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.EnableSN">
+            <summary>
+            True/False flag that determines if serial numbers are required for this transaction.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.OnHandUOM">
+            <summary>
+            Unit of Measure that qualifies the OnHandQty.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.TranDocTypeID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.PCID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.SysRowID">
+            <summary>
+            Unique identifier for this row. The value is a GUID.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.ReasonCodeDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.MYImportNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.EpicorFSA">
+            <summary>
+            Related to an Epicor FSA transaction
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.ContractCode">
+            <summary>
+            Used by Epicor FSA
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.WarrantyCode">
+            <summary>
+            Used by Epicor FSA
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.CallCode">
+            <summary>
+            Used by Epicor FSA
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.FSAServiceOrderNum">
+            <summary>
+            Service Order number generated on FSA, stored on FSAExtData db table.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.FSAServiceOrderResourceNum">
+            <summary>
+            Service Order Resource generated on FSA, stored on FSAExtData db table.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.FSAAction">
+            <summary>
+            Has the Transaction Type field set in FSA and is stored on FSAExtData db table.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.FSAEquipmentPartNum">
+            <summary>
+            Part created as equipment in ERP and Installed through FSA process, stored in FSAExtData.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.FSAEquipmentInstallID">
+            <summary>
+            Resource ID for Equipment in FSAOffice ( this can be found in the Equipment information/Administrative tab in the Resource ID). Stored on FSAExtData db table.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.ContractNum">
+            <summary>
+            FSA ContractNum
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.TrackSerialNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.FSABin">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.SelectionPCID">
+            <summary>
+            PCID used to populate the selection criteria.  This value is not used for update.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.SelectionPartNum">
+            <summary>
+            PartNum used to populate the selection criteria.  This value is not used for update.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.SelectionPartDescription">
+            <summary>
+            The description of the selection part number.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.AdvancedPackageControl">
+            <summary>
+            True/False that determines if Advanced Package Control is allowed.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.AttributeSetID">
+            <summary>
+            The unique identifier of the related Dynamic Attribute Set.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.AttributeSetDescription">
+            <summary>
+            The Full Description of the Attribute Set.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.AttributeSetShortDescription">
+            <summary>
+            The Short Description of the Attribute Set.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.SelectionAttributeSetID">
+            <summary>
+            The unique identifier of the related Dynamic Attribute Set.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.SelectionAttributeSetDescription">
+            <summary>
+            The Full Description of the Attribute Set.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.SelectionAttributeSetShortDescription">
+            <summary>
+            The Short Description of the Attribute Set.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.NumberOfPieces">
+            <summary>
+            Number of pieces for inventory attribute tracked parts.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.PartTrackInventoryAttributes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.PartTrackLots">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.PartTrackDimension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.PartSalesUM">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.PartPricePerCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.PartSellingFactor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.PartTrackSerialNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.PartIUM">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.PartPartDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.PartAttrClassID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.WareHseDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.WhseBinDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.RowMod">
+            <summary>
+            RowMod
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjRow.SpecifiedProperties">
+            <summary>
+            SpecifiedProperties
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.Company">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.LegalNumberID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.TransYear">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.TransYearSuffix">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.DspTransYear">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.ShowDspTransYear">
+            <summary>
+            Indicates if DspTransYear should be displayed when prompting for a manual number.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.Prefix">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.PrefixList">
+            <summary>
+            The list of prefixes that can be selected by the user for manual numbers.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.NumberSuffix">
+            <summary>
+            The suffix portion of the legal number.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.EnablePrefix">
+            <summary>
+            Indicates if the prefix can be entered by the user.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.EnableSuffix">
+            <summary>
+            Indicates if the suffix (number) can be entered by the user.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.NumberOption">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.DocumentDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.GenerationType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.TransPeriod">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.PeriodPrefix">
+            <summary>
+            Prefix for the period
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.ShowTransPeriod">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.LegalNumber">
+            <summary>
+            Used when the full legal number is entered
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.TranDocTypeID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.TranDocTypeID2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.GenerationOption">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.SysRowID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.RowMod">
+            <summary>
+            RowMod
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.LegalNumGenOptsRow.SpecifiedProperties">
+            <summary>
+            SpecifiedProperties
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.Company">
+            <summary>
+            Company
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.SerialNumber">
+            <summary>
+            SerialNumber
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.Scrapped">
+            <summary>
+            Scrapped flag
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.ScrappedReasonCode">
+            <summary>
+            Scrapped reason code
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.Voided">
+            <summary>
+            Voided flag
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.Reference">
+            <summary>
+            Reference field
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.ReasonCodeType">
+            <summary>
+            Reason code type = s
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.ReasonCodeDesc">
+            <summary>
+            Reason code description
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.PartNum">
+            <summary>
+            PartNumber
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.SNPrefix">
+            <summary>
+            Serial number prefix
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.SNBaseNumber">
+            <summary>
+            Base number used to create the serial number
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.SourceRowID">
+            <summary>
+            RowID of the source record for this serial number
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.TransType">
+            <summary>
+            TransType of the record that created this serial number
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.PassedInspection">
+            <summary>
+            True if this serial numbered part passed inspection
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.Deselected">
+            <summary>
+            Used to flag previously selected serial numbers as deselected 
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.KitWhseList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.RawSerialNum">
+            <summary>
+            This will be the raw serial number as it was scanned or entered into the system. This would only differ from the SerialNumber field if a validate type mask was being used where characters were stripped (using ~ in the mask).
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.KBLbrAction">
+            <summary>
+            Action type field used for Kanban receipts to indicate if the new serial number status is Inventory, Scrapped or NonConf.  This requires Code/desc:  1 ` inventory 2 ` Scrapped 3 ` Nonconformance
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.KBLbrActionDesc">
+            <summary>
+            Description field for KBLbrAction ? holds the translated description for the KBLbrAction code for UI display and combo box.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.PreventDeselect">
+            <summary>
+            If true, then users can not deselect this serial number.  This is used by applications that allow maintenance to the Selected Serial Numbers after update.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.XRefPartNum">
+            <summary>
+            Used only by SN Assignment
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.XRefPartType">
+            <summary>
+            Used only by SN Assignment: C = Customer Part / I = Internal Part XRef
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.PreDeselected">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.poLinkValues">
+            <summary>
+            temporary field used to link the packout lines to ship detail lines
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.SNMask">
+            <summary>
+            The mask the was used to generate the serial number
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.NotSavedToDB">
+            <summary>
+            Flag to indicate that the SelectedSerialNumbers entry has not yet been saved to the DB for the related transaction. Used to keep track of which deselected serial numbers need to be passed to the transaction update logic.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.SysRowID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.RowMod">
+            <summary>
+            RowMod
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectedSerialNumbersRow.SpecifiedProperties">
+            <summary>
+            SpecifiedProperties
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.Company">
+            <summary>
+            Company Identifier.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.Plant">
+            <summary>
+            Site Identifier. This field cannot be blank.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.PartNum">
+            <summary>
+            The PartNum field identifies the Part and is used in the primary key. 
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.NumberOfDigits">
+            <summary>
+            Number of digits in the serial number
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.SNMask">
+            <summary>
+            If the SNBaseDataType is Mask this is the Serial Mask ID assigned for format validation/generation. 
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.SNBaseDataType">
+             <summary>
+             Current setting for Data type of the Base Serial Number field to be used as new serial numbers are generated. Valid values; Character, Integer, Mask
+            Code/desc required:
+            CHARACTER`Alphanumeric
+            INTEGER`NumericOnly
+            MASK`Serial Mask
+            This field should be flagged as Include = true in Object Designer.
+            
+             </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.SNFormat">
+             <summary>
+             Current setting for Format of the Base serial number that will be used as new serial numbers are generated. Expressed in progress syntax. Ex: X(30), 99999999 for Character or Integer, or as a Serial Mask defined in SerialMask table.
+            This field should be flagged as ReadOnly and Include = true in Object Designer.
+             </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.LeadingZeroes">
+            <summary>
+            Whether or not to have leading zeroes
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.SNPrefix">
+             <summary>
+             Current setting for the prefix that will be attached to all new Serial Numbers as they are generated for Character and Integer format types.
+            This field should be flagged as Include = true in Object Designer.
+             </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.SNMaskSuffix">
+            <summary>
+            A standard suffix that will be attached to all serial numbers generated for the PartSite currently used only by SNBaseStructure Mask types
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.SNMaskPrefix">
+            <summary>
+            The prefix that was used to construct the serial number currently used only by SNBaseStructure Mask types
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.SNLastUsedSeq">
+            <summary>
+            This is the last used serial sequence. It is used only for the Mask Generate type to determine the next logical serial number to generate for this part/Site. It can be altered by the user and several PartSites can have the same counter values defined, but
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.HasSerialNumbers">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.SysRowID">
+            <summary>
+            Unique identifier for this row. The value is a GUID.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.BitFlag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.PartPricePerCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.PartTrackLots">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.PartTrackSerialNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.PartTrackDimension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.PartSalesUM">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.PartIUM">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.PartSellingFactor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.PartPartDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.SerialMaskMaskType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.SerialMaskMask">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.SerialMaskExample">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.SerialMaskDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.RowMod">
+            <summary>
+            RowMod
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SNFormatRow.SpecifiedProperties">
+            <summary>
+            SpecifiedProperties
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.Company">
+            <summary>
+            Company
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.BinNum">
+            <summary>
+            Bin number
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.OnHandQty">
+            <summary>
+            On hand quantity
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.NonNettable">
+            <summary>
+            Non nettable flag
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.WareHseCode">
+            <summary>
+            Ware house code
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.LotNum">
+            <summary>
+            Lot number
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.WhseBinDesc">
+            <summary>
+            WareHouse Bin description.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.StkUOMCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.StkUOMDesc">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.BaseOnHandQty">
+            <summary>
+            The PartBin.OnHandQty expressed in Part Base UOM
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.BaseOnHandUOM">
+            <summary>
+            Unit of Measure to qualifiy BaseOnHandQty. This is the Part Base UOM.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.BinType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.BinTypeDesc">
+            <summary>
+            Translated description string of Bin Type
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.SendToFSA">
+            <summary>
+            Determines if the Part Bin has to be synchronized with Epicor FSA application.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.PCID">
+            <summary>
+            The parent PCID for the bin or child PCID record.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.PartNum">
+            <summary>
+            PartNum for the bin record.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.ItemPCID">
+            <summary>
+            The PCID of the child in the parent PCID.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.AttributeSetID">
+            <summary>
+            The unique identifier of the related Dynamic Attribute Set.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.AttributeSetDescription">
+            <summary>
+            The Full Description of the Attribute Set.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.AttributeSetShortDescription">
+            <summary>
+            The Short Description of the Attribute Set.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.PartAttrClassID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.NumberOfPieces">
+            <summary>
+            Number of pieces for inventory attribute tracked parts.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.SysRowID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.RowMod">
+            <summary>
+            RowMod
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjBrwRow.SpecifiedProperties">
+            <summary>
+            SpecifiedProperties
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.Company">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.PartNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.WareHseCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.OnHandQty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.BinNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.AdjustQuantity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.ReasonCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.LotNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.Reference">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.UnitOfMeasure">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.TransDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.ReasonType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.SerialNoQty">
+            <summary>
+            Total Serial number quantity
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.TempSerialNo">
+            <summary>
+            Temporary serial number
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.ReasonCodeReq">
+            <summary>
+            Reason code required flag
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.AllowNegQty">
+            <summary>
+            Determines if inventory level can be driven below zero.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.LegalNumberMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.StkUOMCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.EnableSN">
+            <summary>
+            True/False flag that determines if serial numbers are required for this transaction.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.OnHandUOM">
+            <summary>
+            Unit of Measure that qualifies the OnHandQty.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.TranDocTypeID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.PartTrackSerialNum">
+            <summary>
+            Indicates if this part is serial number tracked 
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.PartSellingFactor">
+             <summary>
+             This value is used to convert quantity when there is a difference in the customers unit of measure and how it is stocked in inventory. Example is sold in pounds, stocked in sheets.  
+            
+            Formula: Inventory Qty * Conversion Factor = Selling Qty.
+             </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.PartPricePerCode">
+            <summary>
+            Indicates the pricing per quantity for this part. It can be "E" = per each, "C" = per hundred,  "M" = per thousand. Maintainable only via Part Maintenance. The initial default is "E". Used as default PricePerCode in order entry and invoice entry. 
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.PartTrackDimension">
+             <summary>
+             Onhand quantity is always tracked in the Parts primary inventory uom (Part.IUM). Checking this box indicates that you want to allow tracking of onhand quantity by additional uoms. 
+            The actual UOMs to be tracked for the part are indicated by PartUOM.TrackOnHand. In order to set the PartUOM.TrackOhHand = True the Part.TrackDimension must = true.
+            This replaces the old 8.3 Track Dimension feature
+             </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.PartIUM">
+             <summary>
+             Primary Inventory Unit of Measure. The unit costs, are based on this uom. Used as a default for issue transactions for the part.  Part onhand and allocation quantities are tracked by this uom.  The quantities can also be tracked by other uoms (see PartUOM table) but tracking at this uom is mandatory.   Use UOMClass.DefUOMCode of the system default UOMClass  when creating new part records (see XASyst.DefUOMClassID).
+            
+             </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.PartSalesUM">
+            <summary>
+            The Selling Unit of measure for the Part. The UOM which the unit prices are based on. Defaults as the Part.IUM.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.PartTrackLots">
+             <summary>
+             Indicates if Lot numbers are prompted for in transactions for this part.  Backflushing and AutoReceiving functions are ignored when TrackLots = Yes.
+            
+             </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.PartPartDescription">
+            <summary>
+            Describes the Part.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.ReasonCodeDescription">
+            <summary>
+            Full description of Reason... used on displays/reports.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.WareHseDescription">
+            <summary>
+            Description.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.WhseBinDescription">
+            <summary>
+            This field can be used to describe the physical location, dimensions or other attributes of the warehouse bin. It possibly could even be used to record a "Heat" number for an item. The description is optional and can be left blank. 
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.PCID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.AttributeSetID">
+            <summary>
+            The unique identifier of the related Dynamic Attribute Set.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.SysRowID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.RowMod">
+            <summary>
+            RowMod
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.InventoryQtyAdjListRow.SpecifiedProperties">
+            <summary>
+            SpecifiedProperties
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.partNum">
+            <summary>
+            The part number to which the serial numbers have been assigned.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.quantity">
+            <summary>
+            The quantity of serial numbers that need to be selected.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.whereClause">
+            <summary>
+            whereClause for filtering available serial numbers
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.transType">
+            <summary>
+            transType of this transaction
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.sourceRowID">
+            <summary>
+            Include when filtering a set of SN's for BL processing is necessary.  It may be null if not needed.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.enableCreate">
+            <summary>
+            Determines if serial numbers can be created.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.enableSelect">
+            <summary>
+            Determines if serial numbers can be selected.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.enableRetrieve">
+            <summary>
+            Determines if serial numbers can be retrieved.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.allowVoided">
+            <summary>
+            Specifies whether Voided serial numbers can be manually selected.
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.plant">
+            <summary>
+            The Plant associated with this transaction
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.xrefPartNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.xrefPartType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.xrefCustNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.poLinkValues">
+            <summary>
+            temporary field used to link the packout lines to ship detail lines
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.SysRowID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.RowMod">
+            <summary>
+            RowMod
+            </summary>
+        </member>
+        <member name="P:Erp.Tablesets.SelectSerialNumbersParamsRow.SpecifiedProperties">
+            <summary>
+            SpecifiedProperties
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,2387 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ice.Core.Session</name>
+    </assembly>
+    <members>
+        <member name="T:Ice.Core.OpenIdConnect.LogonCanceledException">
+            <summary>
+            Exception thrown when user cancels logon
+            </summary>
+        </member>
+        <member name="P:Ice.Core.OpenIdConnect.LogonCanceledException.Message">
+            <inheritdoc />
+        </member>
+        <member name="T:Ice.Core.AzureActiveDirectory">
+            <summary>
+            Azure Active Directory token support
+            </summary>
+        </member>
+        <member name="M:Ice.Core.AzureActiveDirectory.CreateSessionForAzureADToken(Ice.Core.Session.LicenseType,System.String,System.Object)">
+            <summary>
+            Create Ice.Core.Session that uses Azure AD token for logon
+            </summary>
+            <param name="licenseType">Session license type</param>
+            <param name="asUrl">AppServer URL</param>
+            <param name="azureADOwnerWindow">Owner window for AzureAD logon screen</param>
+            <returns>New Session object</returns>
+        </member>
+        <member name="M:Ice.Core.AzureActiveDirectory.GetAzureADToken(System.Boolean,System.String,System.Object)">
+            <summary>
+            Set session token info to use tokens after authentication through ADAL
+            </summary>
+            <param name="forceAskForCredentials">If true, always show logon form</param>
+            <param name="selectedUser">Currently logged in user to enforce on re-login, if necessary. May be left empty to select any user</param>
+            <param name="azureADOwnerWindow">Owner window for AzureAD logon screen</param>
+            <returns>Azure AD token information necessary to create session</returns>
+        </member>
+        <member name="M:Ice.Core.AzureActiveDirectory.LogoutAsync">
+            <summary>
+            Logouts the user from AAD.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.AzureActiveDirectory.GetAzureADAccessToken(System.String,System.Boolean)">
+            <summary>
+            Get access token after authentication through ADAL
+            </summary>
+            <param name="selectedUser">Currently logged on user</param>
+            <param name="refreshRequested">true, if token has to be refreshed</param>
+            <returns>Access token string</returns>
+        </member>
+        <member name="M:Ice.Core.AzureActiveDirectory.GetAzureADAccessTokenInfo(System.String,System.Boolean)">
+            <summary>
+            Get access token information after authentication through ADAL
+            </summary>
+            <param name="selectedUser">Currently logged on user</param>
+            <param name="refreshRequested">true, if token has to be refreshed</param>
+            <returns>Access token information like token and expiration time</returns>
+        </member>
+        <member name="T:Ice.Core.SessionAzureADToken">
+            <summary>
+            Class to store token information for session. Works both for Azure AD and Identity Provider.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.SessionAzureADToken.AzureUser">
+            <summary>
+            Logged in user
+            </summary>
+        </member>
+        <member name="P:Ice.Core.SessionAzureADToken.Token">
+            <summary>
+            Header for WCF calls with current token. 
+            </summary>
+        </member>
+        <member name="P:Ice.Core.SessionAzureADToken.Type">
+            <summary>
+             Session token origin - from AzureAD or from Identity Provider
+            </summary>
+        </member>
+        <member name="P:Ice.Core.SessionAzureADToken.GetAccessTokenHandler">
+            <summary>
+            Function to retrieve token for header.
+            Boolean parameter in this function = forceRefresh. If true, then token is not valid anymore and needs to be recreated.
+            Recommended implementation for AzureAD - use existing ADAL cache to return valid token. ADAL refreshes it internally for us.
+            Only set itif you need to override default session behavior. Null should be used in most cases.
+            </summary>
+        </member>
+        <member name="T:Ice.Core.SessionTokenType">
+            <summary>
+            Session token origin
+            </summary>
+        </member>
+        <member name="F:Ice.Core.SessionTokenType.None">
+            <summary>
+            Token is not used in this session
+            </summary>
+        </member>
+        <member name="F:Ice.Core.SessionTokenType.AzureAD">
+            <summary>
+            Token from Azure AD
+            </summary>
+        </member>
+        <member name="F:Ice.Core.SessionTokenType.IdP">
+            <summary>
+            Token from Identity provider
+            </summary>
+        </member>
+        <member name="T:Ice.Core.AccessTokenInfo">
+            <summary>
+            Information about access token
+            </summary>
+        </member>
+        <member name="P:Ice.Core.AccessTokenInfo.AccessToken">
+            <summary>
+            Current access token value
+            </summary>
+        </member>
+        <member name="P:Ice.Core.AccessTokenInfo.ExpiresOn">
+            <summary>
+            Time when it is supposed to expire
+            </summary>
+        </member>
+        <member name="M:Ice.Core.TenantForm.#ctor">
+            <summary>
+            Form to enter tenant ID value to retrieve Azure Active Directory configuration
+            </summary>
+        </member>
+        <member name="F:Ice.Core.TenantForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.TenantForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Ice.Core.TenantForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Ice.Core.EpiStatusForm">
+            <summary>
+            Status form.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.EpiStatusForm.BWorker">
+            <summary>
+            Provide access to Backgroundworker.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.EpiStatusForm.StatusText">
+            <summary>
+            Set the status label on the form.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.EpiStatusForm.FormTitle">
+            <summary>
+            Sets the form title.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.EpiStatusForm.#ctor">
+            <summary>
+            Constructor for EpiStatus form.
+            </summary>
+        </member>
+        <member name="F:Ice.Core.EpiStatusForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.EpiStatusForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Ice.Core.EpiStatusForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Ice.Core.IdentityProviderLogon">
+            <summary>
+            Identity provider tokens support
+            </summary>
+        </member>
+        <member name="M:Ice.Core.IdentityProviderLogon.CreateSessionForIdpToken(Ice.Core.Session.LicenseType,System.String,System.Object)">
+            <summary>
+            Create Ice.Core.Session that uses Idp token for logon
+            </summary>
+            <param name="licenseType">Session license type</param>
+            <param name="asUrl">AppServer URL</param>
+            <param name="ownerWindow">Owner window for logon dialog</param>
+            <returns>Session instance</returns>
+        </member>
+        <member name="M:Ice.Core.IdentityProviderLogon.GetConfiguration(System.String)">
+            <summary>
+            Get configuration of the Identity Provider from .configuration URL
+            </summary>
+            <param name="applicationServerUrl">AppServer address</param>
+        </member>
+        <member name="M:Ice.Core.IdentityProviderLogon.GetIdpTokenInfo(System.Boolean,System.String,System.Object)">
+            <summary>
+            Set session token info to use tokens after authentication Identity provider
+            </summary>
+            <param name="forceAskForCredentials">If true, always show logon form</param>
+            <param name="selectedUser">Currently logged in user to enforce on re-login, if necessary. May be left empty to select any user</param>
+            <param name="ownerWindow">Owner window</param>
+            <returns>Access token information</returns>
+        </member>
+        <member name="M:Ice.Core.IdentityProviderLogon.GetIdpAccessToken(System.String,System.Boolean)">
+            <summary>
+            Get access token from Identity Provider
+            </summary>
+            <param name="selectedUser">Currently logged on user</param>
+            <param name="refreshRequested">true, if token has to be refreshed</param>
+            <returns>Access token string</returns>
+        </member>
+        <member name="M:Ice.Core.IdentityProviderLogon.GetIdpAccessTokenInfo(System.String,System.Boolean)">
+            <summary>
+            Get access token information from Identity Provider
+            </summary>
+            <param name="selectedUser">Currently logged on user</param>
+            <param name="refreshRequested">true, if token has to be refreshed</param>
+            <returns>Access token information like token and expiration time</returns>
+        </member>
+        <member name="M:Ice.Core.IdentityProviderLogon.GetIdpAccessTokenInfo(System.String,System.String,System.Boolean)">
+            <summary>
+            Get access token information from Identity Provider for specific scope.
+            </summary>
+            <param name="selectedUser">Currently logged on user.</param>
+            <param name="scope">Scope for token.</param>
+            <param name="refreshRequested">true, if token has to be refreshed.</param>
+            <returns>Access token information like token and expiration time.</returns>
+        </member>
+        <member name="M:Ice.Core.IdentityProviderLogon.TokenCleanup">
+            <summary>
+            Clear token cache on exit.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.IdentityProviderLogon.RemoveOldTokenFromCache(Ice.Core.SessionAzureADToken,Ice.Core.SessionAzureADToken)">
+            <summary>
+            Remove previous session user token.
+            </summary>
+            <param name="newTokenInfo">New token created for the session.</param>
+            <param name="oldToken">Previous token from the session that needs to be removed.</param>
+        </member>
+        <member name="T:Ice.Core.ISession">
+            <summary>
+            The session interface.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.Item(System.String)">
+            <summary>
+            Gets or sets the <see cref="T:System.Object"/> with the specified name.
+            </summary>
+            <value>
+            The <see cref="T:System.Object"/>.
+            </value>
+            <param name="key">The name.</param>
+            <returns>The value.</returns>
+        </member>
+        <member name="P:Ice.Core.ISession.AppServer">
+            <summary>
+            The AppServer this session is connected to.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CanChangePredictiveSearch">
+            <summary>
+            Can the user change predictive searches.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CanChangeQSearch">
+            <summary>
+            Can the user change quick searches.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CanCreateSolutions">
+            <summary>
+            Is the user allowed to Create Solution cab files
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CanCustomize">
+            <summary>
+            Can the user customize applications.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CanEditCompAnnotations">
+            <summary>
+            Can the user edit Company Annotations in help.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CanEditUserAnnotations">
+            <summary>
+            Can the user edit User Annotations in help.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CanInstallSolutions">
+            <summary>
+            Is the user allowed to Install Solution cab files
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CanMaintainEnterpriseSearch">
+            <summary>
+            Gets a value indicating whether this user can maintain Field Specific Enterprise Search.
+            </summary>
+            <value><c>true</c> if this user can maintain Field Specific Enterprise Search.</value>
+            <remarks>
+            The Field Specific Enterprise Search is Enterprise Search when called from a specific control on a form. It
+            is opened with the default hot key of Ctrl+Shift+S when on a control that allows the normal searching.
+            </remarks>
+        </member>
+        <member name="P:Ice.Core.ISession.CanPersonalize">
+            <summary>
+            Can the user personalize applications.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CanTheme">
+            <summary>
+            Can the user manage themes.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CanTranslate">
+            <summary>
+            Can the user do language translation.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CanUseEnterpriseSearch">
+            <summary>
+            Is the user allowed to use Enterprise Search.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CanUseEpicorEverywhere">
+            <summary>
+            Indicates if the user has access to Epicor Everywhere.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.Client">
+            <summary>
+            Client type. Valid options are MES, Handheld or default.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CompanyID">
+            <summary>
+            Company ID for this session.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CompanyName">
+            <summary>
+            Company name.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.ConversionsPending">
+            <summary>
+            Conversions Pending
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.ConversionType">
+            <summary>
+            Conversions Type
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CountryCode">
+            <summary>
+            Country Name
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CountryCodeHandler">
+            <summary>
+            Sets the method that will return the Country Code
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CountryGroupCode">
+            <summary>
+            Country Group Name
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CountryGroupCodeHandler">
+            <summary>
+            Sets the method that will return the Country Group Code
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CurrencyCodes">
+            <summary>
+            List of the Base and Reporting currencies for the current company.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CurrencyCodeCollectionBuilder">
+            <summary>
+            Sets the method that will build the Currency Code collection
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CurrencyInfoList">
+            <summary>
+            Contains decimal precision information for the currencies for the current company.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CurrencyInfoCollectionBuilder">
+            <summary>
+            Sets the method that will build the Currency Info List collection
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.CurrentThemeFile">
+            <summary>
+            Returns the currently used Theme File Name
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.DashboardDeveloper">
+            <summary>
+            Gets the Dashboard Developer flag
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.SsrsReportDesigner">
+            <summary>
+            If the user can design SSRS reports.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.DesignMode">
+            <summary>
+            Are we in design mode.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.DisableTheming">
+            <summary>
+            Is theming disabled
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.EditionID">
+            <summary>
+            Edition ID.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.EditionName">
+            <summary>
+            Edition name.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.EmployeeID">
+            <summary>
+            Employee ID.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.EvalExpires">
+            <summary>
+            Expiration date.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.FormatCultureName">
+            <summary>
+            The culture set for formatting. Sets the CurrentCulture of the current thread.
+            The default value is taken from user settings.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.GlobalSecurityManager">
+            <summary>
+            Is the user a global security manager.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.GridsDisplayBaseCurrencyInfo">
+            <summary>
+            Gets a value indicating whether grids will display decimal precision based upon both the base currency and the doc currency or
+            if it just uses the doc currency information.
+            </summary>
+            <value>
+            <c>true</c> if grids display base currency information; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Ice.Core.ISession.InstallationID">
+            <summary>
+            InstallationID.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.LanguageCultureName">
+            <summary>
+            The culture set for language UI resources. Sets the CurrentUICulture of the current thread.
+            The default value is taken from language record.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.LanguageDescription">
+            <summary>
+            Returns the description of currently set language
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.LanguageID">
+            <summary>
+            Get current Language
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.LanguageVersion">
+            <summary>
+            The version of the translation db for the language the user is currently using.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.LaunchType">
+            <summary>
+            Gets or sets the LaunchType
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.LicensableModules">
+            <summary>
+            List of licensable modules
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.License">
+            <summary>
+            License type.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.LicenseTypeID">
+            <summary>
+            License type.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.MaxDCUsers">
+            <summary>
+            Maximum data collection users.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.MaxUsers">
+            <summary>
+            Maximum users.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.MobileConnect">
+            <summary>
+            Are we running in Mobile Connect mode.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.PlantID">
+            <summary>
+            Plant ID
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.PlantName">
+            <summary>
+            Plant name.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.ProductCode">
+            <summary>
+            Product code. 'EP' for Epicor.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.ProductID">
+            <summary>
+            Product ID.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.ProductName">
+            <summary>
+            Product name.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.SecurityManager">
+            <summary>
+            Is the user a security manager.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.ServerBaseLevelApp">
+            <summary>
+            Server Base level for application
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.ServerBaseLevelFW">
+            <summary>
+            Server Base level for application
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.ServerPatchLevelApp">
+            <summary>
+            Server level patch for application
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.ServerPatchLevelFW">
+            <summary>
+            Server patch level for application
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.SessionID">
+            <summary>
+            GUID string that uniquely identifies this object.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.SolutionID">
+            <summary>
+            User SolutionID for Current Company and User
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.AccessScopeID">
+            <summary>
+            User AccessScopeID for Current Company and User
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.SystemCode">
+            <summary>
+            Gets the system code.
+            </summary>
+            <value>
+            The system code.
+            </value>
+            <remarks>
+            For ICE 3 Extend this is "ICE", for ERP it is "ERP".
+            </remarks>
+        </member>
+        <member name="P:Ice.Core.ISession.SystemReplicated">
+            <summary>
+            Indicates that this system is a replica (read-only) of another
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.TaskClientID">
+            <summary>
+            TaskClient ID.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.TaxConnectedStatus">
+            <summary>
+            Tax Connected status
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.Telemetry">
+            <summary>
+            Specifies if for the current session the telemetry is enabled
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.TelemetryKey">
+            <summary>
+            Specifies the current session telemetry key
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.TenantID">
+            <summary>
+            Tenant ID
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.UOMInfoCollectionBuilder">
+            <summary>
+            Sets the method that will build the UOMInfo collection
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.UOMInfoList">
+            <summary>
+            Contains decimal precision information for the UOM codes for the current company.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.UserEmail">
+            <summary>
+            User's default email address.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.ExternalIdentity">
+            <summary>
+            User's external identity.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.UserID">
+            <summary>
+            User ID.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.UserName">
+            <summary>
+            User name.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.UserThemeID">
+            <summary>
+            User preferences ThemeID
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.VersionStringCustom">
+            <summary>
+            Custom version string
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.WorkstationDescription">
+            <summary>
+            Workstation description.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.WorkstationID">
+            <summary>
+            Workstation ID.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.ISession.DedicatedTenancy">
+            <summary>
+            Specifies if session is DedicatedTenancy
+            </summary>
+        </member>
+        <member name="M:Ice.Core.ISession.GetLanguageID">
+            <summary>
+            Return LanguageID without setting any session parameters or changing Thread Culture
+            </summary>
+            <returns>Language ID</returns>
+        </member>
+        <member name="M:Ice.Core.ISession.RefreshLanguageInfo">
+            <summary>
+            Refresh Language Info, such as version and description
+            </summary>
+        </member>
+        <member name="M:Ice.Core.ISession.ModuleLicensed(System.Guid)">
+            <summary>
+            Checks to see if a given module is licensed.
+            </summary>
+            <param name="module">Module to check.</param>
+            <returns>True if licensed, otherwise false.</returns>
+        </member>
+        <member name="T:Ice.Core.Resources.Strings">
+             <summary>
+             A strongly-typed resource class for looking up localized (formatted) strings.
+            This is a Server Side Strings Resource File. It may contain only string entries.
+             </summary>
+        </member>
+        <member name="M:Ice.Core.Resources.Strings.CreateCultureErr(System.Object)">
+             <summary>
+             String: 'Session. Error creating custom culture. Possibly you need to provide access rights to Windows\Globalization folder.
+            Error Description: {0}'.
+             </summary>
+        </member>
+        <member name="P:Ice.Core.Resources.Strings.RunSeedDataUpdate">
+            <summary>
+            String: 'Would you like to run the update process now?'.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Resources.Strings.UpdateDB">
+            <summary>
+            String: 'Update Database'.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Resources.Strings.UpDBVersion(System.Object)">
+             <summary>
+             String: 'Updating Database to {0}.
+            This operation will take a few minutes to complete.'.
+             </summary>
+        </member>
+        <member name="M:Ice.Core.Resources.Strings.ClientServerBindingMismatch(System.Object,System.Object)">
+            <summary>
+            String: 'Unable to connect to server &apos;{0}&apos; using binding &apos;{1}&apos;. The client and service bindings may be mismatched.'.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Resources.Strings.InvalidBindingConfig(System.Object,System.Object)">
+            <summary>
+            String: 'Unable to configure binding &apos;{0}&apos; for the AppServer &apos;{1}&apos;.'.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Resources.Strings.UpdateAppServer">
+            <summary>
+            String: 'Update Application Server'.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Resources.Strings.UnableToCreateAzureADSession">
+            <summary>
+            String: 'Unable to create Azure Active Directory session.'.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Resources.Strings.AzureADSettingNotSpecified(System.Object)">
+            <summary>
+            String: '{0} setting value is not specified in .sysconfig.'.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Resources.Strings.IdentityProviderNotEnabled">
+            <summary>
+            String: 'Identity Provider is not enabled.'.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Resources.Strings.IdpLogonDialogTitle">
+            <summary>
+            String: 'Log in'.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Resources.Strings.ExternalLogonCanceled">
+            <summary>
+            String: 'External logon is canceled by user.'.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Resources.Strings.UnableToCreateIdpSession">
+            <summary>
+            String: 'Unable to create Identity Provider session.'.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Resources.Strings.InvalidDefaultFormType">
+            <summary>
+            String: 'Invalid default form type value.'.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Resources.Strings.FailedToGetEddUrl">
+            <summary>
+            String: 'Failed to get EDD URL.'.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Resources.Strings.FailedToLogout">
+            <summary>
+            String: 'Failed to logout from Azure Active Directory.'.
+            </summary>
+        </member>
+        <member name="T:Ice.Core.Session">
+            <summary>
+            Maintains session state data.
+            </summary>
+        </member>
+        <member name="T:Ice.Core.Session.Product">
+            <summary>
+            The valid products.
+            </summary>
+        </member>
+        <member name="F:Ice.Core.Session.Product.Epicor">
+            <summary>The Epicor product.</summary>
+        </member>
+        <member name="T:Ice.Core.Session.ClientType">
+            <summary>
+            The client types.
+            </summary>
+        </member>
+        <member name="F:Ice.Core.Session.ClientType.Default">
+            <summary>The default client type. This is used for the smart client.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.ClientType.Mes">
+            <summary>Manufacturing Execution System.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.ClientType.Handheld">
+            <summary>Handhelds such as smart phones.</summary>
+        </member>
+        <member name="T:Ice.Core.Session.SessionChangedItem">
+            <summary>
+            The part of the session that has changed.
+            </summary>
+        </member>
+        <member name="F:Ice.Core.Session.SessionChangedItem.Company">
+            <summary>The company has changed.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.SessionChangedItem.Plant">
+            <summary>The plant has changed.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.SessionChangedItem.User">
+            <summary>The user has changed.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.SessionChangedItem.Language">
+            <summary>The language has changed.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.SessionChangedItem.License">
+            <summary>The license has changed.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.SessionChangedItem.Favorites">
+            <summary>The menu favorites has changed.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.SessionChangedItem.MenuTab">
+            <summary>The menu tab has changed.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.SessionChangedItem.ActiveFormSettings">
+            <summary>The ActiveFormSettings has changed.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.SessionChangedItem.TaxConnect">
+            <summary>The TaxConnect status.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.ActiveFormSettings">
+            <summary>
+            ActiveFormSettings
+            </summary>
+        </member>
+        <member name="T:Ice.Core.Session.SessionChangedHandler">
+            <summary>
+            Delegate called when session has been changed
+            </summary>
+            <param name="sender">The session that raised this event</param>
+            <param name="e">Describes session parameter change</param>
+        </member>
+        <member name="E:Ice.Core.Session.SessionChanged">
+            <summary>
+            Event that is fired whenever core session properties change (i.e. Company ID)
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.OnSessionChanged(Ice.Core.Session.SessionChangedItem)">
+            <summary>
+            Raises up the SessionChanged event
+            </summary>
+            <param name="SessionChangedItem">the SessionChangedItem that describes the event</param>
+        </member>
+        <member name="M:Ice.Core.Session.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ice.Core.Session"/> class.
+            </summary>
+            <remarks>
+            Only used for unit testing.
+            </remarks>
+        </member>
+        <member name="M:Ice.Core.Session.#ctor(System.String,System.String)">
+            <summary>
+            Overload of constructor. AppServer URL is obtained from configuration file.  Default license type is used.
+            </summary>
+            <param name="userID">User ID.</param>
+            <param name="password">User password.</param>
+        </member>
+        <member name="M:Ice.Core.Session.#ctor(System.String,System.String,Ice.Core.Session.LicenseType)">
+            <summary>
+            Overload of constructor. AppServer URL is obtained from the configuration file.
+            </summary>
+            <param name="userID">User ID.</param>
+            <param name="password">User password.</param>
+            <param name="licenseType">License type.</param>
+        </member>
+        <member name="M:Ice.Core.Session.#ctor(System.String,System.String,Ice.Core.Session.LicenseType,System.String)">
+            <summary>
+            Overload of constructor. AppServer URL is obtained from the configuration file.
+            </summary>
+            <param name="userID">User ID.</param>
+            <param name="password">User password.</param>
+            <param name="licenseType">License type.</param>
+            <param name="pathToConfigurationFile">An override path to the SysConfig file.</param>
+        </member>
+        <member name="M:Ice.Core.Session.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Overload of constructor.  License type of default is used.
+            </summary>
+            <param name="userID">User ID.</param>
+            <param name="password">User password.</param>
+            <param name="asUrl">AppServer URL.</param>
+        </member>
+        <member name="M:Ice.Core.Session.#ctor(System.String,System.String,System.String,Ice.Core.Session.LicenseType)">
+            <summary>
+            Overload Constructor.
+            </summary>
+            <param name="userID">User ID.</param>
+            <param name="password">User password.</param>
+            <param name="asUrl">AppServer URL</param>
+            <param name="licenseType">License Type.</param>
+        </member>
+        <member name="M:Ice.Core.Session.#ctor(System.String,System.String,System.String,Ice.Core.Session.LicenseType,System.Boolean)">
+            <summary>
+            Overload Constructor.
+            </summary>
+            <param name="userID">User ID.</param>
+            <param name="password">User password.</param>
+            <param name="asUrl">AppServer URL</param>
+            <param name="licenseType">License Type.</param>
+            <param name="fwVerCheck">Indicates if the FW or App version is checked between client and server.</param>
+        </member>
+        <member name="M:Ice.Core.Session.#ctor(System.String,System.String,System.String,Ice.Core.Session.LicenseType,System.String)">
+            <summary>
+            Default Constructor.
+            </summary>
+            <param name="userID">User ID.</param>
+            <param name="password">User password.</param>
+            <param name="asUrl">AppServer URL</param>
+            <param name="licenseType">License Type.</param>
+            <param name="pathToConfigurationFile">An override path to the SysConfig file.</param>
+        </member>
+        <member name="M:Ice.Core.Session.#ctor(System.String,System.String,System.String,Ice.Core.Session.LicenseType,System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            Default Constructor.
+            </summary>
+            <param name="userID">User ID.</param>
+            <param name="password">User password.</param>
+            <param name="asUrl">AppServer URL</param>
+            <param name="licenseType">License Type.</param>
+            <param name="pathToConfigurationFile">An override path to the SysConfig file.</param>
+            <param name="fwVerCheck">Indicates if the FW or App version is checked between client and server.</param>
+            <param name="companyID">Company ID</param>
+            <param name="plantID">Plant ID</param>
+        </member>
+        <member name="M:Ice.Core.Session.#ctor(System.String,System.String,System.String,Ice.Core.Session.LicenseType,System.String,System.Boolean,System.String,System.String,System.Boolean)">
+            <summary>
+            Default Constructor.
+            </summary>
+            <param name="userID">User ID.</param>
+            <param name="password">User password.</param>
+            <param name="asUrl">AppServer URL</param>
+            <param name="licenseType">License Type.</param>
+            <param name="pathToConfigurationFile">An override path to the SysConfig file.</param>
+            <param name="fwVerCheck">Indicates if the FW or App version is checked between client and server.</param>
+            <param name="companyID">Company ID</param>
+            <param name="plantID">Plant ID</param>
+            <param name="useChannelCacheForServices">Whether to allow usage of channel cache when setting up service proxies or not.
+            Turning this setting off is useful under multi-threaded scenarios.</param>
+        </member>
+        <member name="M:Ice.Core.Session.#ctor(Ice.Core.SessionAzureADToken,System.String,Ice.Core.Session.LicenseType,System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            Session with AzureAD token or Identity provider token.
+            </summary>
+            <param name="sessionTokenInfo">Azure Active Directory or Identity provider token logon information for the session</param>
+            <param name="asUrl">Application server URL</param>
+            <param name="licenseType">Session license type</param>
+            <param name="pathToConfigurationFile">An override path to the SysConfig file.</param>
+            <param name="fwVerCheck">Indicates if the FW or App version is checked between client and server.</param>
+            <param name="companyID">Company ID</param>
+            <param name="plantID">Plant ID</param>
+            <exception cref="T:System.ServiceModel.ProtocolException">Exception when selected binding cannot be used</exception>
+        </member>
+        <member name="M:Ice.Core.Session.#ctor(Ice.Core.SessionAzureADToken,System.String,Ice.Core.Session.LicenseType,System.String,System.Boolean,System.String,System.String,System.Boolean)">
+            <summary>
+            Session with AzureAD or Identity provider token.
+            </summary>
+            <param name="sessionTokenInfo">Azure Active Directory or Identity provider token logon information for the session</param>
+            <param name="asUrl">Application server URL</param>
+            <param name="licenseType">Session license type</param>
+            <param name="pathToConfigurationFile">An override path to the SysConfig file.</param>
+            <param name="fwVerCheck">Indicates if the FW or App version is checked between client and server.</param>
+            <param name="companyID">Company ID</param>
+            <param name="plantID">Plant ID</param>
+            <param name="useChannelCacheForServices">Whether to allow usage of channel cache when setting up service proxies or not.
+            Turning this setting off is useful under multi-threaded scenarios.</param>
+            <exception cref="T:System.ServiceModel.ProtocolException">Exception when selected binding cannot be used</exception>
+        </member>
+        <member name="F:Ice.Core.Session.clientCredentials">
+            <summary>
+            represents the current ClientCredentials
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.ClientCredentials">
+            <summary>
+            Gets the current ClientCredentials
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.SetCredentials(System.String,System.String)">
+            <summary>
+            Initialize the client side ClientCredentials singleton using Core.Session
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.Telemetry">
+            <summary>
+            Specifies if for the current session the telemetry is enabled
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.TelemetryKey">
+            <summary>
+            Specifies the current session telemetry key
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.AppServer">
+            <summary>
+            The AppServer this session is connected to.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.DedicatedTenancy">
+            <summary>
+            Specifies if session is DedicatedTenancy
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CompanyID">
+            <summary>
+            Company ID for this session.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CompanyName">
+            <summary>
+            Company name.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.MenuData">
+            <summary>
+            Gets or sets the menu data associated with the session.
+            </summary>
+            <value>
+            The menu data for the session.
+            </value>
+        </member>
+        <member name="P:Ice.Core.Session.PlantID">
+            <summary>
+            Plant ID
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.PlantName">
+            <summary>
+            Plant name.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.TenantID">
+            <summary>
+            Tenant ID
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.IsProductionInstance">
+            <summary>
+            Gets or sets a value indicating whether this instance is a production instance.
+            </summary>
+            <value>
+              <c>true</c> if the license associated with the session company is a production instance; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Ice.Core.Session.WorkstationID">
+            <summary>
+            Workstation ID.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.WorkstationDescription">
+            <summary>
+            Workstation description.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.UserID">
+            <summary>
+            User ID.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.UserName">
+            <summary>
+            User name.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.EmployeeID">
+            <summary>
+            Employee ID.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.ProductID">
+            <summary>
+            Product ID.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.EditionID">
+            <summary>
+            Edition ID.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.ProductCode">
+            <summary>
+            Product code. 'EP' for Epicor.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.ProductName">
+            <summary>
+            Product name.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.EditionName">
+            <summary>
+            Edition name.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.TaxConnectedStatus">
+            <summary>
+            Tax Connected status
+            </summary>
+        </member>
+        <member name="T:Ice.Core.Session.GetTaxConnectStatus">
+            <summary>
+            Represents the delegate that will return the TaxConnect status
+            </summary>
+            <param name="session">The current Session</param>
+            <returns>TaxConnect status</returns>
+        </member>
+        <member name="P:Ice.Core.Session.TaxConnectHandler">
+            <summary>
+            Sets the method that will return theTaxConnect status
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.ConversionsPending">
+            <summary>
+            Conversions Pending
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.ConversionType">
+            <summary>
+            Conversions Type
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CountryGroupCode">
+            <summary>
+            Country Group Name
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CountryCode">
+            <summary>
+            Country Name
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.ParseProductEnum(Ice.Core.Session.Product)">
+            <summary>
+            Parses Session.Product enumeration into code
+            </summary>
+            <param name="productEnum">Session.Product enumeration</param>
+            <returns>Product Code</returns>
+        </member>
+        <member name="P:Ice.Core.Session.LanguageID">
+            <summary>
+            Get/Set current Language
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.LanguageDescription">
+            <summary>
+            Returns the description of currently set language
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.GetLanguageID">
+            <summary>
+            Return LanguageID without setting any session parameters or changing Thread Culture
+            </summary>
+            <returns>Language ID</returns>
+        </member>
+        <member name="P:Ice.Core.Session.LanguageVersion">
+            <summary>
+            The version of the translation db for the language the user is currently using.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.RefreshLanguageInfo">
+            <summary>
+            Refresh Language Info, such as version and description
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.MobileConnect">
+            <summary>
+            Are we running in Mobile Connect mode.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.Client">
+            <summary>
+            Client type. Valid options are MES, Handheld or default.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.License">
+            <summary>
+            License type.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.LicenseTypeID">
+            <summary>
+            License type.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.GlobalSecurityManager">
+            <summary>
+            Is the user a global security manager.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.SystemReplicated">
+            <summary>
+            Indicates that this system is a replica (read-only) of another
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.MaxUsers">
+            <summary>
+            Maximum users.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.MaxDCUsers">
+            <summary>
+            Maximum data collection users.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.InstallationID">
+            <summary>
+            InstallationID.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.EvalExpires">
+            <summary>
+            Expiration date.
+            </summary>
+        </member>
+        <member name="F:Ice.Core.Session.Version">
+            <summary>
+            Client version info
+            </summary>
+        </member>
+        <member name="F:Ice.Core.Session.VersionNumber">
+            <summary>
+            Client version number.
+            </summary>
+        </member>
+        <member name="F:Ice.Core.Session.VersionDate">
+            <summary>
+            Client version date.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.VersionString">
+            <summary>
+            Client version number formatted in the format of nn.nn.nnn
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.VersionPatchString">
+            <summary>
+            Client Patch Level number formatted in the format of nn.nn.nnn.nn
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.VersionStringCustom">
+            <summary>
+            Custom version string
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.ServerPatchLevelApp">
+            <summary>
+            Server level patch for application
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.ServerPatchLevelFW">
+            <summary>
+            Server patch level for application
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.ServerBaseLevelApp">
+            <summary>
+            Server Base level for application
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.ServerBaseLevelFW">
+            <summary>
+            Server Base level for application
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.DesignMode">
+            <summary>
+            Are we in design mode.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CanTranslate">
+            <summary>
+            Can the user do language translation.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CanPersonalize">
+            <summary>
+            Can the user personalize applications.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CanCustomize">
+            <summary>
+            Can the user customize applications.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CanTheme">
+            <summary>
+            Can the user manage themes.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CurrentThemeFile">
+            <summary>
+            Returns the currently used Theme File Name
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.DisableTheming">
+            <summary>
+            Is theming disabled
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.UserThemeID">
+            <summary>
+            User preferences ThemeID
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CanChangeQSearch">
+            <summary>
+            Can the user change quick searches.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CanChangePredictiveSearch">
+            <summary>
+            Can the user change predictive searches.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CanMaintainEnterpriseSearch">
+            <summary>
+            Gets a value indicating whether this user can maintain Field Specific Enterprise Search.
+            </summary>
+            <value><c>true</c> if this user can maintain Field Specific Enterprise Search.</value>
+            <remarks>
+            The Field Specific Enterprise Search is Enterprise Search when called from a specific control on a form. It
+            is opened with the default hot key of Ctrl+Shift+S when on a control that allows the normal searching.
+            </remarks>
+        </member>
+        <member name="P:Ice.Core.Session.SecurityManager">
+            <summary>
+            Is the user a security manager.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.DashboardDeveloper">
+            <summary>
+            Gets the Dashboard Developer flag
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.SsrsReportDesigner">
+            <summary>
+            If the user can design SSRS reports.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CanEditCompAnnotations">
+            <summary>
+            Can the user edit Company Annotations in help.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CanEditUserAnnotations">
+            <summary>
+            Can the user edit User Annotations in help.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CanUseEnterpriseSearch">
+            <summary>
+            Is the user allowed to use Enterprise Search.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CanUseEpicorEverywhere">
+            <summary>
+            Indicates if the user has access to Epicor Everywhere.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.UserEmail">
+            <summary>
+            User's default email address.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.ExternalIdentity">
+            <summary>
+            User's external identity.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.SessionID">
+            <summary>
+            GUID string that uniquely identifies this object.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.SolutionID">
+            <summary>
+            User SolutionID for Current Company and User
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.AccessScopeID">
+            <summary>
+            User AccessScopeID for Current Company and User
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.SystemCode">
+            <summary>
+            Gets the system code.
+            </summary>
+            <value>
+            The system code.
+            </value>
+            <remarks>
+            For ICE 3 Extend this is "ICE", for ERP it is "ERP".
+            </remarks>
+        </member>
+        <member name="P:Ice.Core.Session.LicensableModules">
+            <summary>
+            List of licensable modules
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.FormatCultureName">
+            <summary>
+            The culture set for formatting. Sets the CurrentCulture of the current thread.
+            The default value is taken from user settings.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.LanguageCultureName">
+            <summary>
+            The culture set for language UI resources. Sets the CurrentUICulture of the current thread.
+            The default value is taken from language record.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.GetCreateLanguageCulture(System.String,System.String,System.String)">
+            <summary>
+            Creates and returns culture. If exists, returns existing culture
+            </summary>
+            <param name="cultureName">Culture to be created</param>
+            <param name="languageID">associated language id</param>
+            <param name="languageDescription">associated language description</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ice.Core.Session.CreateCulture(System.String,System.String,System.String)">
+            <summary>
+            Creates a custom Epicor culture
+            </summary>
+            <param name="cultureName">Name</param>
+            <param name="languageID">Language ID</param>
+            <param name="languageDesc">Language Description</param>
+            <returns>Culture Info or null</returns>
+        </member>
+        <member name="T:Ice.Core.Session.GetCountryCode">
+            <summary>
+            Represents the delegate that will return the Country Code
+            </summary>
+            <param name="session">The current Session</param>
+            <returns>Country code string</returns>
+        </member>
+        <member name="T:Ice.Core.Session.GetCountryGroupCode">
+            <summary>
+            Represents the delegate that will return the Country Group Code
+            </summary>
+            <param name="session">The current Session</param>
+            <returns>Country group code string</returns>
+        </member>
+        <member name="P:Ice.Core.Session.CountryCodeHandler">
+            <summary>
+            Sets the method that will return the Country Code
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CountryGroupCodeHandler">
+            <summary>
+            Sets the method that will return the Country Group Code
+            </summary>
+        </member>
+        <member name="T:Ice.Core.Session.GetUOMInfoCollection">
+            <summary>
+            Represents the delegate that will build the UOMInfo Collection
+            </summary>
+            <param name="session">The current Session</param>
+            <returns>Collection of UOMInfo structures</returns>
+        </member>
+        <member name="T:Ice.Core.Session.GetCurrencyCodesCollection">
+            <summary>
+            Represents the delegate that will build the CurrencyCodes Collection
+            </summary>
+            <param name="session">The current Session</param>
+            <returns>Collection of CurrencyInfo structures</returns>
+        </member>
+        <member name="T:Ice.Core.Session.GetCurrencyInfoCollection">
+            <summary>
+            Represents the delegate that will build the CurrencyInfoList Collection
+            </summary>
+            <param name="session">The current Session</param>
+            <returns>Collection of CurrencyInfo structures</returns>
+        </member>
+        <member name="P:Ice.Core.Session.UOMInfoCollectionBuilder">
+            <summary>
+            Sets the method that will build the UOMInfo collection
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CurrencyCodeCollectionBuilder">
+            <summary>
+            Sets the method that will build the Currency Code collection
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CurrencyInfoCollectionBuilder">
+            <summary>
+            Sets the method that will build the Currency Info List collection
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CurrencyCodes">
+            <summary>
+            List of the Base and Reporting currencies for the current company.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CurrencyInfoList">
+            <summary>
+            Contains decimal precision information for the currencies for the current company.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.GridsDisplayBaseCurrencyInfo">
+            <summary>
+            Gets a value indicating whether grids will display decimal precision based upon both the base currency and the doc currency or
+            if it just uses the doc currency information.
+            </summary>
+            <value>
+            <c>true</c> if grids display base currency information; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Ice.Core.Session.UOMInfoList">
+            <summary>
+            Contains decimal precision information for the UOM codes for the current company.
+            </summary>
+        </member>
+        <member name="F:Ice.Core.Session.UOMGlobalID">
+            <summary>
+            Represents the key to UOMInfoList for the global UOM information.
+            </summary>
+        </member>
+        <member name="T:Ice.Core.Session.CurrencyInfo">
+            <summary>
+            Contains decimal precision information about a currency.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CurrencyInfo.CurrencyCode">
+            <summary>
+            Currency code for this currency.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CurrencyInfo.CurrencySymbol">
+            <summary>
+            Currency symbol for this currency.  Normally this will be the three letter ISO code.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CurrencyInfo.DecimalsGeneral">
+            <summary>
+            Number of decimal places for general pricing.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CurrencyInfo.DecimalsPrice">
+            <summary>
+            Number of decimal places for selling pricing.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CurrencyInfo.DecimalsCost">
+            <summary>
+            Number of decimal places for purchase pricing.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.CurrencyInfo.#ctor(System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new CurrencyInfo structure.
+            </summary>
+            <param name="currencyCode">Currency code.</param>
+            <param name="currencySymbol">Currency symbol.</param>
+            <param name="decimalsGeneral">Decimal precision for general types.</param>
+            <param name="decimalsPrice">Decimal precision for price types.</param>
+            <param name="decimalsCost">Decimal precision for cost types.</param>
+        </member>
+        <member name="M:Ice.Core.Session.CurrencyInfo.Copy">
+            <summary>
+            Returns an copy of the CurrencyInfo structure.
+            </summary>
+            <returns>A new CurrencyInfo structure with the same values as the original.</returns>
+        </member>
+        <member name="T:Ice.Core.Session.UOMInfo">
+            <summary>
+            A structure to hold UOM information related to decimal formatting.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.UOMInfo.UOMCode">
+            <summary>
+            The UOMCode this UOMInfo holds.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.UOMInfo.NumberOfDecimals">
+            <summary>
+            The number of decimals to use for display purposes for this UOMCode.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.UOMInfo.#ctor(System.String,System.Int32)">
+            <summary>
+            Default constructor for the UOMInfo structure.
+            </summary>
+            <param name="uomCode">The UOMCode.</param>
+            <param name="numberOfDec">Number of decimals to use for display purposes.</param>
+        </member>
+        <member name="P:Ice.Core.Session.CanCreateSolutions">
+            <summary>
+            Is the user allowed to Create Solution cab files
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.CanInstallSolutions">
+            <summary>
+            Is the user allowed to Install Solution cab files
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.LaunchType">
+            <summary>
+            Gets or sets the LaunchType
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.TaskClientID">
+            <summary>
+            TaskClient ID.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.DefaultFormType">
+            <summary>
+            User's default form type.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.SynergyUrl">
+            <summary>
+            Get the Synergy URL for the current tenant.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.UseChannelCacheForServices">
+             <summary>
+             Controls whether to allow usage of channel cache when setting up service proxies or not.
+             Used internally by this <see cref="T:Ice.Core.Session"/> class when creating service proxies,
+             as well as by <see cref="M:Ice.Lib.Framework.WCFServiceSupport.CreateImpl``1(Ice.Core.Session,System.String)"/> for default channel cache mode.
+             </summary>
+            
+        </member>
+        <member name="M:Ice.Core.Session.ModuleLicensed(System.Guid)">
+            <summary>
+            Checks to see if a given module is licensed.
+            </summary>
+            <param name="module">Module to check.</param>
+            <returns>True if licensed, otherwise false.</returns>
+        </member>
+        <member name="M:Ice.Core.Session.SetUser(System.String,System.String,System.Boolean,System.Boolean,System.Object)">
+            <summary>
+            Changes the user ID.
+            </summary>
+            <param name="userID">User ID.</param>
+            <param name="password">User password.</param>
+            <param name="forceChange">Whether to force a change to the user even if the user is already the same as the session's current user.</param>
+            <param name="useTokenAuthentication">If true, use AzureAD or Identity provider token session</param>
+            <param name="tokenLogonOwnerWindow">Owner window for AzureAD or Identity provider logon screen</param>
+        </member>
+        <member name="P:Ice.Core.Session.DataDiscoveryUrl">
+            <summary>
+            Gets The Data Discovery Url
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.SetUserByName(System.String,System.String,System.Boolean)">
+            <summary>
+            Changes the user ID.
+            </summary>
+            <param name="userID">User ID.</param>
+            <param name="password">User password.</param>
+            <param name="forceChange">Whether to force a change to the user even if the user is already the same as the session's current user.</param>
+        </member>
+        <member name="M:Ice.Core.Session.SetUserForOidcToken(System.Object)">
+            <summary>
+            Changes the user ID for AzureAD or Identity provider authentication
+            </summary>
+            <param name="logonOwnerWindow">Owner window for token logon screen</param>
+        </member>
+        <member name="M:Ice.Core.Session.InnerSetUser(System.String,System.String,System.Action)">
+            <summary>
+            Changes the user ID.
+            </summary>
+            <param name="userID">User ID.</param>
+            <param name="password">User password.</param>
+            <param name="updateCredentials">Action to update information about user</param>
+        </member>
+        <member name="M:Ice.Core.Session.ChangePassword(System.String,System.String,System.String)">
+            <summary>
+            Tries to change the user's password.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.RefreshLicense">
+            <summary>
+            If a program updates the license data, this method must be called to refresh the
+            cached version on the client
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.GetTerminalID">
+            <summary>
+            Get the terminal ID
+            </summary>
+            <returns>terminal ID</returns>
+        </member>
+        <member name="M:Ice.Core.Session.SetTaskClientID">
+            <summary>
+            Builds the TaskClientID by using the SysCompany.WorkstationMethod.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.IsValidSession(System.String,System.String)">
+            <summary>
+            Returns whether a session ID/user ID combination is valid
+            </summary>
+            <param name="sessionID"></param>
+            <param name="userID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ice.Core.Session.ResetPluginProperties">
+            <summary>
+            Reset the plug-in property value
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.SetUserDefaults(System.String)">
+            <summary>
+            Set the user dependent session variables when the current user changes
+            </summary>
+            <param name="userID">New user ID</param>
+        </member>
+        <member name="M:Ice.Core.Session.SetLanguage(System.String,System.Boolean)">
+            <summary>
+            Set language. If language passed is Null then set to default as per user/other settings
+            </summary>
+            <param name="newLanguageID">New language ID</param>
+            <param name="setCurrentThreadCulture">Should we set current thread Culture and UICulture. There are few cases when we don't want to do so immediately</param>
+        </member>
+        <member name="M:Ice.Core.Session.getLangIDWithDefaults(System.String)">
+            <summary>
+            Get language id with fallback to defaults
+            </summary>
+            <param name="newLanguageID">Null or proposed new id</param>
+            <returns>The language identifier.</returns>
+        </member>
+        <member name="M:Ice.Core.Session.RefreshValuesFromServer">
+            <summary>
+            Call the server to refresh the values of the session.
+            </summary>
+        </member>
+        <member name="T:Ice.Core.Session.LicenseType">
+            <summary>
+            The valid license types.
+            </summary>
+        </member>
+        <member name="F:Ice.Core.Session.LicenseType.Default">
+            <summary>A default license.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.LicenseType.DataCollection">
+            <summary>A data collection license.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.LicenseType.WebService">
+            <summary>A web service license.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.LicenseType.WebServiceShared">
+            <summary>A shared web service license.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.LicenseType.EnterpriseProcessing">
+            <summary>An enterprise processing license.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.LicenseType.DataAdministration">
+            <summary>A data administration license.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.LicenseType.SupplierConnect">
+            <summary>A Supplier Connect license.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.LicenseType.CustomerConnect">
+            <summary>A Customer Connect license.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.LicenseType.CRM">
+            <summary>A CRM license.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.LicenseType.MobileFramework">
+            <summary>A Mobile Framework license.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.LicenseType.TimeExpense">
+            <summary>A Time and Expense license.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.LicenseType.MobileWarehouse">
+            <summary>A Mobile Warehouse license.</summary>
+        </member>
+        <member name="F:Ice.Core.Session.LicenseType.GlobalUser">
+            <summary>A global user license.</summary>
+        </member>
+        <member name="T:Ice.Core.Session.Module">
+            <summary>
+            List of Module Codes
+            </summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.AP">
+            <summary>Accounts Payable</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.AM">
+            <summary>Advanced Material Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.AR">
+            <summary>Accounts Receivable</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.AV">
+            <summary>Document Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.BM">
+            <summary>Engineering</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.CM">
+            <summary>Multi-Currency Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.CR">
+            <summary>Customer Relationship Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.CC">
+            <summary>Customer Connect - Store Front</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.AIM">
+            <summary>Advanced Inventory Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.FA">
+            <summary>Asset Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.DE">
+            <summary>MES Data Collection</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.EQ">
+            <summary>Estimate/Quote Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.ES">
+            <summary>Scheduling</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.ED">
+            <summary>EDI</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.FS">
+            <summary>Field Service Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.GL">
+            <summary>General Ledger</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.IM">
+            <summary>Inventory Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.JC">
+            <summary>Job Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.MS">
+            <summary>Multi-Site Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.MR">
+            <summary>Material Requirement Planning</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.OM">
+            <summary>Order Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.PC">
+            <summary>Configurator</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.PM">
+            <summary>Purchasing Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.PR">
+            <summary>Payroll</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.QA">
+            <summary>Quality Assurance</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.RQ">
+            <summary>Supplier Relationship Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SR">
+            <summary>Shipping/Receiving</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SV">
+            <summary>Executive Dashboard</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.EB">
+            <summary>Business Intelligence</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.AS">
+            <summary>Pack Out Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.XS">
+            <summary>ExpressShip</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.PJ">
+            <summary>Project Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.PS">
+            <summary>Advanced Planning and Scheduling</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.AC">
+            <summary>Advanced Cost Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.MW">
+            <summary>Multiple Warehouse</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.PU">
+            <summary>Advanced Purchasing Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.MD">
+            <summary>Multiple Division</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.CP">
+            <summary>Consolidated Purchasing</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.MP">
+            <summary>Multi-Site Publish</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.HD">
+            <summary>Case Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.MJ">
+            <summary>Multi-Level Job</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.PD">
+            <summary>Advanced Production</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.MQ">
+            <summary>Multi-Level Quote</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SE">
+            <summary>Single-Level Engineering</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.ME">
+            <summary>Multi-Level Engineering</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.PZ">
+            <summary>Productization</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.VZ">
+            <summary>Verticalization Creator</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.HH">
+            <summary>Handheld</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SS">
+            <summary>Demand Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.PH">
+            <summary>Purchase Contracts</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.LP">
+            <summary>Auto/Label Print Control</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.BP">
+            <summary>Business Process Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.PY">
+            <summary>Consolidated Payment</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.GJ">
+            <summary>Multi-Site G/L Journals</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.CD">
+            <summary>Credit Card Processing</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.RP">
+            <summary>Rebates Promotions and Royalties</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.WB">
+            <summary>Epicor Everywhere™ Framework</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SP">
+            <summary>Attachments for SharePoint®</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.RS">
+            <summary>Replication Server</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.IC">
+            <summary>Isolated Company (SaaS)</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.MB">
+            <summary>Multiple Books</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SI">
+            <summary>Supplier Managed Inventory</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.CI">
+            <summary>Customer Managed Inventory</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.LC">
+            <summary>Landed Cost/Container Tracking</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.WE">
+            <summary>RoHS/WEEE Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.TC">
+            <summary>Tax Connect</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.EES">
+            <summary>Enterprise Search</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.MM">
+            <summary>Maintenance Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.EQA">
+            <summary>Enhanced Quality Assurance</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.PB">
+            <summary>Project Billing</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.TM">
+            <summary>Time Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.EM">
+            <summary>Expense Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.AA">
+            <summary>Advanced Allocations</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.PI">
+            <summary>Payment Instruments</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SY">
+            <summary>Surveys</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SRM">
+            <summary>SLS - Residential Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SCS">
+            <summary>SLS - Community Services</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SOC">
+            <summary>SLS - Online Claiming for Residential Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SCI">
+            <summary>SLS - iCare Integration</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SCC">
+            <summary>SLS - Clinical Care</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SAF">
+            <summary>SLS - Forms Designer</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SOE">
+            <summary>SLS - Outbound EDI Interface</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.SDK">
+            <summary>ICE SDK</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.TCS">
+            <summary>Epicor Tax Connect ST</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.TCU">
+            <summary>Epicor Tax Connect UT</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.MFS">
+            <summary>Mobile Field Service</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.DRV">
+            <summary>Deferred Revenue</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.CRL">
+            <summary>Contract Renewal</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.PYC">
+            <summary>Petty Cash</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.GU">
+            <summary>Global Users</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.EDU">
+            <summary>Education Module</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.EPI">
+            <summary>External Patroll Integration</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.PKG">
+            <summary>Package Control</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.ARL">
+            <summary>AR Lockbox</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.APP">
+            <summary>AP Positive Pay</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.AMC">
+            <summary>AP MICR Checks</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.FSA">
+            <summary>Epicor Field Service Automation</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.DNM">
+            <summary>Dealer Network Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.WMS">
+            <summary>Third Party WMS Integration</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.LMG">
+            <summary>Location Management</summary>
+        </member>
+        <member name="F:Ice.Core.Session.Module.IOT">
+            <summary>Epicor IoT Connector</summary>
+        </member>
+        <member name="M:Ice.Core.Session.GetLicenseTypeID(Ice.Core.Session.LicenseType)">
+            <summary>
+            Convert from <see cref="T:Ice.Core.Session.LicenseType"/> to <see cref="T:Ice.License.LicensableUserCounts"/>.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.IsFeatureAvailable(System.Guid)">
+            <summary>
+            Determines whether a feature is available for the current user and company.
+            </summary>
+            <param name="featureID">The feature flag identifier.</param>
+            <returns>Whether the feature is available.</returns>
+            <remarks>
+            Will check the feature identifier against licensing and feature flags.
+            </remarks>
+        </member>
+        <member name="M:Ice.Core.Session.Add(System.String,System.Object)">
+            <summary>
+            Adds an element with the specified key and value into the session data collection.
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Ice.Core.Session.Remove(System.String)">
+            <summary>
+            Removes the element with the specified key from the session data collection.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="P:Ice.Core.Session.Item(System.String)">
+            <summary>
+            Indexer for the session data collection.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.ContainsKey(System.String)">
+            <summary>
+            Determines if the session data collection contains a specific key.
+            </summary>
+            <param name="key">The key to locate.</param>
+            <returns>True if the key exists, otherwise false.</returns>
+        </member>
+        <member name="M:Ice.Core.Session.CompareTo(System.Object)">
+            <summary>
+            Compares one session object to another.
+            </summary>
+            <param name="obj">Session object to compare against.</param>
+            <returns>zero if objects are the same, otherwise one.</returns>
+        </member>
+        <member name="E:Ice.Core.Session.SessionClosing">
+            <summary>
+            Occurs when the session is closing.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.OnSessionClosing">
+            <summary>
+            Fires the SessionClosing event.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="E:Ice.Core.Session.SessionInitialized">
+            <summary>
+            Occurs after the session gets its culture and language set and determines the EDD URL.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.OnSessionInitialized">
+            <summary>
+            Fires the SessionInitialized event.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.WriteCredentials">
+            <summary>
+            Save the current user ID and password (encrypted) to the .sysconfig file.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.ClearCredentials">
+            <summary>
+            Clear the credentials from the .sysconfig file.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.Clone(Ice.Core.Session.LicenseType,System.String,System.String)">
+            <summary>
+            Creates a new session based on the settings of this session
+            </summary>
+            <param name="licenseType">License type for the session</param>
+            <param name="companyID">Company ID</param>
+            <param name="plantID">Plant ID</param>
+            <returns></returns>
+        </member>
+        <member name="T:Ice.Core.Session.DisposedEventHandler">
+            <summary>
+            The event handler for the <see cref="E:Ice.Core.Session.Disposed"/> event.
+            </summary>
+        </member>
+        <member name="E:Ice.Core.Session.Disposed">
+            <summary>
+            Occurs when the session is disposed.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.Dispose">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.Dispose(System.Boolean)">
+            <summary>
+             Disposes resources
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Ice.Core.Session.RestoreConnection">
+            <summary>
+            Used for serialization
+            </summary>
+        </member>
+        <member name="T:Ice.Core.Session.TokenCredentials">
+            <summary>
+            Access Token credentials
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.TokenCredentials.UserID">
+            <summary>
+            Epicor user identifier.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.TokenCredentials.AccessToken">
+            <summary>
+            Access Token obtained for this user
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.#ctor(Ice.Core.Session.TokenCredentials,System.String,Ice.Core.Session.LicenseType,System.String,System.Boolean)">
+            <summary>
+            Default Constructor for Auth Token authentication.
+            </summary>
+            <param name="token">Access Token credentials</param>
+            <param name="asUrl">AppServer URL</param>
+            <param name="licenseType">License Type.</param>
+            <param name="pathToConfigurationFile">pathToConfigurationFile</param>
+            <param name="fwVerCheck">Indicates if the FW or App version is checked between client and server.</param>
+        </member>
+        <member name="M:Ice.Core.Session.#ctor(Ice.Core.Session.TokenCredentials,System.String,Ice.Core.Session.LicenseType,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Default Constructor for Auth Token authentication.
+            </summary>
+            <param name="token">Access Token credentials</param>
+            <param name="asUrl">AppServer URL</param>
+            <param name="licenseType">License Type.</param>
+            <param name="pathToConfigurationFile">pathToConfigurationFile</param>
+            <param name="fwVerCheck">Indicates if the FW or App version is checked between client and server.</param>
+            <param name="useChannelCacheForServices">Whether to allow usage of channel cache when setting up service proxies or not.
+            Turning this setting off is useful under multi-threaded scenarios.</param>
+        </member>
+        <member name="M:Ice.Core.Session.SetToken(Ice.Core.Session.TokenCredentials)">
+            <summary>
+            Update token for current session.
+            </summary>
+            <param name="token">Access token credentials.</param>
+        </member>
+        <member name="P:Ice.Core.Session.GetAccessTokenFunc">
+            <summary>
+            Function called to retrieve Azure AD or IdP token for the session. If null, no AzureAD or IdP is used.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Session.GetAccessTokenInfo(System.Boolean)">
+            <summary>
+            Gets current access token information for AzureAD or IdP.
+            Used in IceShell AHP as they cannot use callback function in child EDD tiles
+            </summary>
+            <param name="refreshRequested">Force to drop current token and get new one</param>
+            <returns>Returns current token and expiration time</returns>
+        </member>
+        <member name="P:Ice.Core.Session.IdpUserName">
+            <summary>
+            Get the user name for the IdP logon. Null is returned if no IdP token is used.
+            </summary>
+        </member>
+        <member name="P:Ice.Core.Session.MessageHubClient">
+            <summary>
+            Get access to push notifications functionality.
+            </summary>
+        </member>
+        <member name="T:Ice.Core.Telemetry.SessionTelemetryHelper">
+            <summary>
+            Telemetry related events and methods for Session
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Telemetry.SessionTelemetryHelper.CreateTelemetryContext(Ice.Core.Session)">
+            <summary>
+            Builds an EpiTelemetryContext object from the session object provided.
+            </summary>
+            <param name="currSession"></param>
+            <returns>TelemetryContext object</returns>
+        </member>
+        <member name="M:Ice.Core.Telemetry.SessionTelemetryHelper.TriggerSessionStartStopTelemetry(Ice.Core.Session)">
+            <summary>
+            Triggers session start telemetry and listens to <see cref="E:Ice.Core.Session.SessionClosing"/> event to fire Session Stop telemetry.
+            </summary>
+            <param name="session">The session object to send start and stop telemetry</param>
+        </member>
+        <member name="T:Ice.Core.Wcf.ConfigFileBinding">
+            <summary>
+            Helper functions to retrieve binding configuration from configuration file.
+            </summary>
+        </member>
+        <member name="M:Ice.Core.Wcf.ConfigFileBinding.GetBindingFromConfigFile(System.String,System.String)">
+            <summary>
+            Resolves the binding using specified configuration file.
+            </summary>
+            <param name="name">The name of binding to retrieve.</param>
+            <param name="configFilePath">path to configuration file with system.serviceModel section.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ice.Core.Wcf.ConfigFileBinding.GetServiceModelBindingsSection(System.String)">
+            <summary>
+            Gets the bindings section inside the system.serviceModel.
+            </summary>
+            <param name="configFilePath">The path to the configuration file with system.serviceModel/Bindings section.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ice.Core.Wcf.ConfigFileBinding.GetBindingFromBindingsSection(System.String,System.ServiceModel.Configuration.BindingsSection)">
+            <summary>
+            Resolves the binding using specified configuration file.
+            </summary>
+            <param name="name">The name of binding to retrieve.</param>
+            <param name="section"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ice.Lib.Framework.WCFServiceSupport">
+            <summary>
+            Represents the WCF Service Support helper class
+            </summary>
+        </member>
+        <member name="P:Ice.Lib.Framework.WCFServiceSupport.ValidateWCFCertificate">
+            <summary>
+            Indicates whether or not the WCF service certificate will be validated.
+            </summary>
+        </member>
+        <member name="M:Ice.Lib.Framework.WCFServiceSupport.CreateCustomBinding(System.String)">
+            <summary>
+            Creates the standard set of NetTcp Bindings used ICE/ERP services.
+            </summary>
+            <param name="appServerUrl">The URL of the AppServer.</param>
+            <returns>System.ServiceModel.Channels.CustomBinding.</returns>
+        </member>
+        <member name="M:Ice.Lib.Framework.WCFServiceSupport.CreateImpl``1(Ice.Core.Session,System.String)">
+            <summary>
+            Create an instance of service impl using Core.Session.
+            </summary>
+            <typeparam name="T">Impl class.</typeparam>
+            <param name="session">Core.Session.</param>
+            <param name="uriPath">Impl URI path.</param>
+        </member>
+        <member name="M:Ice.Lib.Framework.WCFServiceSupport.CreateImpl``1(Ice.Core.Session,System.String,System.Boolean)">
+            <summary>
+            Create an instance of service impl using Core.Session.
+            </summary>
+            <typeparam name="T">Impl class.</typeparam>
+            <param name="session">Core.Session.</param>
+            <param name="uriPath">Impl URI path.</param>
+            <param name="useCachedEntry">True to cache the channel; otherwise, false.</param>
+            <remarks>The cache is not thread-safe.</remarks>
+        </member>
+        <member name="M:Ice.Lib.Framework.WCFServiceSupport.GetBindingFromConfig">
+            <summary>
+            If not a predefined binding, try to resolve to a custom one using this function
+            </summary>
+            <returns>CustomBinding from config file system.serviceModel/bindings section with the name specified in EndpointBinding value of .sysconfig file or null.</returns>
+        </member>
+    </members>
+</doc>

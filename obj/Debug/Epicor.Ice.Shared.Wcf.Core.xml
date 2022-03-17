@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Ice.Shared.Wcf.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Epicor.ServiceModel.Channels.Client`1">
+            <summary>
+            Implements ClientBase for Epicor services"/>
+            </summary>
+            <typeparam name="T">The service contract class type</typeparam>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.Client`1.SetHeaders">
+            <summary>
+            Converts header objects into WCF message headers in the current operation context.
+            </summary>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.Client`1.#ctor(System.ServiceModel.Channels.Binding,System.Uri)">
+            <summary>
+            Create a client object
+            </summary>
+            <param name="binding">The client binding</param>
+            <param name="uri">The target service Uri</param>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.Client`1.#ctor(System.ServiceModel.Channels.Binding,System.Uri,System.ServiceModel.EndpointIdentity)">
+            <summary>
+            Creates a client object
+            </summary>
+            <param name="binding">The client binding object</param>
+            <param name="uri">The target service Uri</param>
+            <param name="identity">The endpoint identity for the connection</param>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.Client`1.OnFaulted(System.Object,System.EventArgs)">
+            <summary>
+            Re-creates the client channel when a fault is detected
+            </summary>
+            <param name="sender">The sending object</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.Client`1.Dispose">
+            <summary>
+            Disposes the client object
+            </summary>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.Client`1.GetUriPath(System.Type)">
+            <summary>
+            Returns the standard (relative) service path for this service.
+            </summary>
+            <param name="contractType">The contract type</param>
+            <returns>The relative path for the service</returns>
+        </member>
+        <member name="T:Epicor.ServiceModel.Configuration.CompressionEncodingElement">
+            <summary>
+            Validates that compression encoding is properly configured for WCF.
+            </summary>
+        </member>
+        <member name="M:Epicor.ServiceModel.Configuration.CompressionEncodingElement.ApplyConfiguration(System.ServiceModel.Channels.BindingElement)">
+            <summary>
+            Called by WCF when the compression encoder is initialized.
+            </summary>
+            <param name="bindingElement">The binding element containing the compression encoder.</param>
+        </member>
+        <member name="T:Ice.Common.EpicorServerFault">
+            <summary>
+            A FaultException holding EpicorFaultDetail which will be delivered to the client contract
+            This is FaultException to be used from server side only at global error handler to communicate
+            the error details.
+            </summary>
+        </member>
+        <member name="P:Ice.Common.EpicorServerFault.CorrelationId">
+            <summary>
+            Correlation ID, i.e. a unique identifier used to correlate client to server error messages or exceptions.
+            </summary>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Exceptions.FaultHelper.GetFaultFromException(System.Exception,System.Boolean)">
+            <summary>
+            Create EpicorServerFault from Exception
+            </summary>
+            <param name="ex">Exception</param>
+            <param name="includeStackTrace">true, if stack trace information should be included; otherwise, false.</param>
+            <returns>EpicorServerFault</returns>
+        </member>
+        <member name="T:Ice.Shared.Wcf.Core.Resources.Strings">
+             <summary>
+             A strongly-typed resource class for looking up localized (formatted) strings.
+            This is a Server Side Strings Resource File. It may contain only string entries.
+             </summary>
+        </member>
+        <member name="P:Ice.Shared.Wcf.Core.Resources.Strings.RestrictedFaultMessage">
+            <summary>
+            String: 'A server error occurred. Review the server event logs for details.'.
+            </summary>
+        </member>
+        <member name="T:Ice.IceTablesetSurrogate">
+            <summary>
+            Used by WCF to serialize and deserialize data contracts.
+            </summary>
+        </member>
+        <member name="M:Ice.IceTablesetSurrogate.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ice.IceTablesetSurrogate"/> class.
+            </summary>
+        </member>
+        <member name="M:Ice.IceTablesetSurrogate.GetCustomDataToExport(System.Type,System.Type)">
+            <summary>
+            Inherited from IDataContractSurrogate
+            </summary>
+            <param name="clrType"></param>
+            <param name="dataContractType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ice.UseIceSurrogateAttribute">
+            <summary>
+            Specifies the custom data contract serializer for Ice.
+            </summary>
+        </member>
+        <member name="M:Ice.UseIceSurrogateAttribute.AddBindingParameters(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            Configures any binding elements to support the contract behavior.
+            </summary>
+            <param name="description">The contract description to modify.</param>
+            <param name="endpoint">The endpoint to modify.</param>
+            <param name="parameters">The objects that binding elements require to support the behavior.</param>
+        </member>
+        <member name="M:Ice.UseIceSurrogateAttribute.ApplyClientBehavior(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+            <summary>
+            Implements a modification or extension of the client across a contract.
+            </summary>
+            <param name="description">The contract description for which the extension is intended.</param>
+            <param name="endpoint">The endpoint.</param>
+            <param name="proxy">The client runtime.</param>
+        </member>
+        <member name="M:Ice.UseIceSurrogateAttribute.ApplyDispatchBehavior(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.DispatchRuntime)">
+            <summary>
+            Implements a modification or extension of the client across a contract.
+            </summary>
+            <param name="description">The contract description to be modified.</param>
+            <param name="endpoint">The endpoint that exposes the contract.</param>
+            <param name="dispatch">The dispatch runtime that controls service execution.</param>
+        </member>
+        <member name="M:Ice.UseIceSurrogateAttribute.Validate(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Description.ServiceEndpoint)">
+            <summary>
+            Implement to confirm that the contract and endpoint can support the contract behavior.
+            </summary>
+            <param name="description">The contract to validate.</param>
+            <param name="endpoint">The endpoint to validate.</param>
+        </member>
+        <member name="M:Ice.UseIceSurrogateAttribute.ExportContract(System.ServiceModel.Description.WsdlExporter,System.ServiceModel.Description.WsdlContractConversionContext)">
+            <summary>
+            Writes custom Web Services Description Language (WSDL) elements into the generated WSDL for a contract.
+            </summary>
+            <param name="exporter">The <see cref="T:System.ServiceModel.Description.WsdlExporter"/> that exports the contract information.</param>
+            <param name="context">Provides mappings from exported WSDL elements to the contract description.</param>
+        </member>
+        <member name="M:Ice.UseIceSurrogateAttribute.ExportEndpoint(System.ServiceModel.Description.WsdlExporter,System.ServiceModel.Description.WsdlEndpointConversionContext)">
+            <summary>
+            Writes custom Web Services Description Language (WSDL) elements into the generated WSDL for an endpoint.
+            </summary>
+            <param name="exporter">The <see cref="T:System.ServiceModel.Description.WsdlExporter"/> that exports the endpoint information.</param>
+            <param name="context">Provides mappings from exported WSDL elements to the endpoint description.</param>
+        </member>
+        <member name="M:Ice.UseIceSurrogateAttribute.AddBindingParameters(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            Adds the binding parameters.
+            </summary>
+            <param name="description">The description.</param>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="M:Ice.UseIceSurrogateAttribute.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.ClientOperation)">
+            <summary>
+            Applies the client behavior.
+            </summary>
+            <param name="description">The description.</param>
+            <param name="proxy">The proxy.</param>
+        </member>
+        <member name="M:Ice.UseIceSurrogateAttribute.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.DispatchOperation)">
+            <summary>
+            Applies the dispatch behavior.
+            </summary>
+            <param name="description">The description.</param>
+            <param name="dispatch">The dispatch.</param>
+        </member>
+        <member name="M:Ice.UseIceSurrogateAttribute.Validate(System.ServiceModel.Description.OperationDescription)">
+            <summary>
+            Validates the specified description.
+            </summary>
+            <param name="description">The description.</param>
+        </member>
+    </members>
+</doc>
