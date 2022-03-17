@@ -20,6 +20,7 @@ namespace Intransit_Inventory_Sync
         public String EmailServer = "";
         public String EpicorServer = "";
         public String EpicorDatabase = "";
+        public String EpicorConfigFile = "";
         public String EpicorSQLUser = "";
         public String EpicorSQLPassword = "";
         public string ExtraRecipient = "";
@@ -49,6 +50,7 @@ namespace Intransit_Inventory_Sync
 
                     this.EpicorServer = XmlReader.GetElementsByTagName("EpicorServer")[0].InnerText;
                     this.EpicorDatabase = XmlReader.GetElementsByTagName("EpicorDatabase")[0].InnerText;
+                    this.EpicorConfigFile = XmlReader.GetElementsByTagName("EpicorConfigFile")[0].InnerText;
                     this.EpicorSQLUser = XmlReader.GetElementsByTagName("EpicorSQLUser")[0].InnerText;
                     this.EpicorSQLPassword = XmlReader.GetElementsByTagName("EpicorSQLPassword")[0].InnerText;
                     this.ExtraRecipient = XmlReader.GetElementsByTagName("ExtraRecipient")[0].InnerText;
