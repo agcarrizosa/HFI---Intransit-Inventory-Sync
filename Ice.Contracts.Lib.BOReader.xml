@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ice.Contracts.Lib.BOReader</name>
+    </assembly>
+    <members>
+        <member name="T:Ice.Contracts.BOReaderSvcContract">
+            <summary>
+            Business Object Data Reader.
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.BOReaderSvcContract.GetCodeDescList(System.String,System.String)">
+            <summary>
+            Gets a list of code and description pairs for a column.  First tries to find the list
+            using the ICE system code and then if not found will try the ERP system code.
+            </summary>
+            <param name="tableName"></param>
+            <param name="columnName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ice.Contracts.BOReaderSvcContract.GetCodeDescriptionList(System.String,System.String,System.String)">
+            <summary>
+            Get a list of code and description pairs for a column.
+            </summary>
+            <param name="systemCode"></param>
+            <param name="tableName"></param>
+            <param name="columnName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ice.Contracts.BOReaderSvcContract.GetList(System.String,System.String,System.String)">
+            <summary>
+            Call GetList method
+            </summary>
+            <param name="serviceNamespace">The fully resolved Service name</param>
+            <param name="whereClause">WhereClause</param>
+            <param name="columnList">List of Columns to return</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ice.Contracts.BOReaderSvcContract.GetListWithPaging(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            Call GetList method
+            </summary>
+            <param name="serviceNamespace">The fully resolved Service name</param>
+            <param name="whereClause">WhereClause</param>
+            <param name="pageSize"></param>
+            <param name="columnList">List of Columns to return</param>
+            <returns></returns>
+            <exception cref="T:Ice.BLException"></exception>
+        </member>
+        <member name="M:Ice.Contracts.BOReaderSvcContract.GetRows(System.String,System.String,System.String)">
+            <summary>
+            Call GetRows method
+            </summary>
+            <param name="serviceNamespace">The fully resolved Service name</param>
+            <param name="whereClause">WhereClause</param>
+            <param name="columnList">List of Columns to return</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ice.Contracts.BOReaderSvcContract.GetRowsWithPaging(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            Call GetRows method
+            </summary>
+            <param name="serviceNamespace"></param>
+            <param name="whereClause"></param>
+            <param name="pageSize"></param>
+            <param name="columnList"></param>
+            <returns></returns>
+            <exception cref="T:Ice.BLException"></exception>
+        </member>
+        <member name="M:Ice.Contracts.BOReaderSvcContract.InvokeAlternateSearchMethod(System.String,System.String,System.String,System.String)">
+            <summary>
+            Invoke the Alternate Search Method by method name
+            </summary>
+            <param name="serviceNamespace">The fully resolved Service name</param>
+            <param name="searchMethod">The name of the Alternate Search method</param>
+            <param name="whereClause">WhereClause</param>
+            <param name="columnList">List of Columns to return</param>
+            <returns>The results of the Alternate Search method</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ice.Contracts.Lib.SessionMod</name>
+    </assembly>
+    <members>
+        <member name="T:Ice.Lib.SessionModDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Ice.Lib.SessionModDataSet.SessionModDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Ice.Lib.SessionModDataSet.SessionModRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Ice.Lib.SessionModDataSet.SessionModRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Ice.Lib.ModuleAccessDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Ice.Lib.ModuleAccessDataSet.ModuleAccessDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Ice.Lib.ModuleAccessDataSet.ModuleAccessRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Ice.Lib.ModuleAccessDataSet.ModuleAccessRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Ice.Contracts.SessionModSvcContract">
+            <summary>
+            Modifies session state
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetSolutionID(System.String,System.String,System.String@)">
+            <summary>
+            gets the current tracked SolutionID for User/Current Company
+            </summary>
+            <param name="userID"></param>
+            <param name="companyID"></param>
+            <param name="solutionID"></param>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetLicense(System.String,System.Int32@,System.Int32@,System.Guid@,System.Nullable{System.DateTime}@,System.Guid@)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetModuleAccess(System.Collections.Generic.IDictionary{System.Guid,System.Boolean}@)">
+            <summary>
+            Return the module access for the current company.
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetLicensedModuleAccess">
+            <summary>
+            Returns all the modules for the current company with flag for licensed.
+            </summary>
+            <returns>Licensed modules with their string description.</returns>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.SetCompany(System.String,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.Boolean@)">
+            <summary>
+            Set the session's current company.
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.SetDateFormat(System.String)">
+            <summary>
+            Set the date format for the session
+            </summary>
+            <param name="dateFormat">Date format</param>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.SetEmployee(System.String)">
+            <summary>
+            Set the current employee ID for the session
+            </summary>
+            <param name="employeeID"></param>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.SetLanguage(System.String)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.SetPlant(System.String,System.String@)">
+            <summary>
+            Set the session's current site.
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.SetUser(System.String,System.String)">
+            <summary>
+            Sets the user.
+            </summary>
+            <param name="userID">The user identifier.</param>
+            <param name="password">The password.</param>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.SetWorkstation(System.String,System.String@)">
+            <summary>
+            Set the current workstation ID for the session
+            </summary>
+            <param name="newWorkstationID">New workstation ID</param>
+            <param name="workstationDescription">Workstation's description</param>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.SetTaskClientID(System.String,System.String@)">
+            <summary>
+            Set the TaskClientID for the current session
+            </summary>
+            <param name="environmentUserName">Environment.UserName</param>
+            <param name="taskClientID">TaskClientID calculated based on SysCompany.WorkstationMethod</param>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.Handshake(System.Version)">
+            <summary>
+            Validate the client version against server version
+            </summary>
+            <param name="clientVersion">The Client version.</param>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.UpdateSeedData">
+            <summary>
+            call to update seed data for patches
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.HandshakeBaseVersion(System.Version)">
+            <summary>
+            Validate the base FW client version against base FW server version
+            </summary>
+            <param name="clientVersion">The Client version.</param>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.Sync(System.String,System.String,System.Int32,System.String,System.String,System.String@,System.Boolean@,System.String@)">
+            <summary>
+            Synchronize the client and server copies of the session state
+            </summary>
+            <param name="clientDateFormat">The client date format.</param>
+            <param name="clientComputerName">Name of the client computer.</param>
+            <param name="clientTerminalID">The client terminal ID.</param>
+            <param name="clientUserName">Current client machine user name</param>
+            <param name="appserver">Url of the Appserver the client is connected to</param>
+            <param name="userID">The user identifier.</param>
+            <param name="replicatedDatabase">Whether this is a replicated (read-only) database</param>
+            <param name="taskClientID">Calculated value of TaskClientID based on the SysCompany.WorkstationMethod</param>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.Login">
+            <summary>
+            Creates a Session on the server for the validated user that is maintained until Logout is called.
+            </summary>
+            <returns>A new SessionID</returns>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.Logout">
+            <summary>
+            Stops caching this Session.
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetLanguage">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.InMobileConnect">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.IsValidSession(System.String,System.String)">
+            <summary>
+            Checks whether a given session ID/user ID combination is valid
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetCustomVersion">
+            <summary>
+            Returns the custom version string defined by a third-party
+            </summary>
+            <remarks>This string may be blank</remarks>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetPatchLevel">
+            <summary>
+            Returns the Server FW patch level
+            </summary>
+            <remarks>This string may be blank</remarks>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetPatchLevelApp">
+            <summary>
+            Returns the Sever App patch level
+            </summary>
+            <remarks>This string may be blank</remarks>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetRequiredDBVersionApp">
+            <summary>
+            Returns the Sever App Required DB level
+            </summary>
+            <remarks>This string may be blank</remarks>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetSystemCodeApp">
+            <summary>
+            Returns the Sever Application system code
+            </summary>
+            <remarks>This string may be blank</remarks>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetBaseLevel">
+            <summary>
+            Returns the FW Base Level
+            </summary>
+            <remarks>This string may be blank</remarks>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetBaseLevelApp">
+            <summary>
+            Returns the FW Base Level
+            </summary>
+            <remarks>This string may be blank</remarks>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.DedicatedTenancy">
+            <summary>
+            Returns the DedicatedTenancy value
+            </summary>
+            <remarks>This string may be blank</remarks>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetCurrentValues(System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.Collections.Generic.IEnumerable{System.Guid}@)">
+            <summary>
+            Get current values from the server session.
+            </summary>
+            <param name="companyID">The company identifier.</param>
+            <param name="companyName">The company name.</param>
+            <param name="siteID">The site identifier.</param>
+            <param name="siteName">The site name.</param>
+            <param name="employeeID">The employee identifier.</param>
+            <param name="workstationID">The workstation identifier.</param>
+            <param name="workstationDescription">The workstation description.</param>
+            <param name="systemCode">The system code.</param>
+            <param name="countryGroupCode"></param>
+            <param name="countryCode"></param>
+            <param name="tenantID">The tenant identifier.</param>
+            <param name="solutionID">The currently tracked solution's identifier.</param>
+            <param name="enabledFeatureFlags">Collection of enabled feature flags.</param>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetCurrentValuesFromServer(System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@,System.Boolean@,System.Collections.Generic.IEnumerable{System.Guid}@)">
+            <summary>
+            Get current values from the server session.
+            </summary>
+            <param name="companyID">The company identifier.</param>
+            <param name="companyName">The company name.</param>
+            <param name="siteID">The site identifier.</param>
+            <param name="siteName">The site name.</param>
+            <param name="employeeID">The employee identifier.</param>
+            <param name="workstationID">The workstation identifier.</param>
+            <param name="workstationDescription">The workstation description.</param>
+            <param name="systemCode">The system code.</param>
+            <param name="countryGroupCode"></param>
+            <param name="countryCode"></param>
+            <param name="tenantID">The tenant identifier.</param>
+            <param name="solutionID">The currently tracked solution's identifier.</param>
+            <param name="accessScopeID">The users access scope identifier.</param>
+            <param name="isProductionInstance">Indicates if license associated with the company session is a production instance.</param>
+            <param name="enabledFeatureFlags">Collection of enabled feature flags.</param>
+        </member>
+        <member name="M:Ice.Contracts.SessionModSvcContract.GetSynergyUrl">
+            <summary>
+            Get the Synergy URL if one is setup within the system.
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.ModuleAccessRow.Identifier">
+            <summary>
+            Guid identifier for module.
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.ModuleAccessRow.Name">
+            <summary>
+            String description for module
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.ModuleAccessRow.isLicensed">
+            <summary>
+            Indicates if the module is licensed
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.ModuleAccessRow.SysRowID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.ModuleAccessRow.RowMod">
+            <summary>
+            RowMod
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.ModuleAccessRow.SpecifiedProperties">
+            <summary>
+            SpecifiedProperties
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.SessionModRow.ParamDesc">
+            <summary>
+            Parameter Description
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.SessionModRow.ParamName">
+            <summary>
+            Name of the parameter used as the key
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.SessionModRow.ParamValue">
+            <summary>
+            Parameter value
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.SessionModRow.SysRowID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.SessionModRow.RowMod">
+            <summary>
+            RowMod
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.SessionModRow.SpecifiedProperties">
+            <summary>
+            SpecifiedProperties
+            </summary>
+        </member>
+    </members>
+</doc>

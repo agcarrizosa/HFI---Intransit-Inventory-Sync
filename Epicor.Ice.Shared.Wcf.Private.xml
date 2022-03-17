@@ -1,0 +1,587 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epicor.Ice.Shared.Wcf.Private</name>
+    </assembly>
+    <members>
+        <member name="M:Epicor.ServiceModel.Channels.ChannelEntry.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress,System.ServiceModel.Description.ClientCredentials)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Epicor.ServiceModel.Channels.ChannelEntry"/> class.
+            </summary>
+            <param name="binding">The binding.</param>
+            <param name="endpointAddress">The endpoint address.</param>
+            <param name="credentials">The credentials.</param>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.ChannelEntryCache.#cctor">
+            <summary>
+            Initializes the <see cref="T:Epicor.ServiceModel.Channels.ChannelEntryCache" /> class.
+            </summary>
+        </member>
+        <member name="T:Epicor.ServiceModel.Channels.ClientCredentialsChangeEventArgs">
+            <summary>
+            Provides data for the <see cref="E:Epicor.ServiceModel.Channels.ClientCredentialsChangeNotifier.CredentialsChanged"/> event.
+            </summary>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.ClientCredentialsChangeEventArgs.#ctor(System.ServiceModel.Description.ClientCredentials,System.ServiceModel.Description.ClientCredentials)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Epicor.ServiceModel.Channels.ClientCredentialsChangeEventArgs" /> class.
+            </summary>
+            <param name="oldCredentials">The old credentials.</param>
+            <param name="newCredentials">The new credentials.</param>
+        </member>
+        <member name="P:Epicor.ServiceModel.Channels.ClientCredentialsChangeEventArgs.NewCredentials">
+            <summary>
+            Gets the new credentials.
+            </summary>
+            <value>
+            The new credentials.
+            </value>
+        </member>
+        <member name="P:Epicor.ServiceModel.Channels.ClientCredentialsChangeEventArgs.OldCredentials">
+            <summary>
+            Gets the old credentials.
+            </summary>
+            <value>
+            The old credentials.
+            </value>
+        </member>
+        <member name="T:Epicor.ServiceModel.Channels.ClientCredentialsChangeNotifier">
+            <summary>
+            Notifies event subscribers when <see cref="T:System.ServiceModel.Description.ClientCredentials"/> change.
+            </summary>
+            <remarks>
+            This should only happen when the user changes their password.
+            </remarks>
+        </member>
+        <member name="E:Epicor.ServiceModel.Channels.ClientCredentialsChangeNotifier.CredentialsChanged">
+            <summary>
+            Occurs when the <see cref="T:System.ServiceModel.Description.ClientCredentials"/> change.
+            </summary>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.ClientCredentialsChangeNotifier.OnCredentialsChanged(Epicor.ServiceModel.Channels.ClientCredentialsChangeEventArgs)">
+            <summary>
+            Raises the <see cref="E:CredentialsChanged" /> event.
+            </summary>
+            <param name="args">The <see cref="T:Epicor.ServiceModel.Channels.ClientCredentialsChangeEventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.ClientCredentialsChangeNotifier.DoWithNoSubscribers(System.Action)">
+            <summary>
+            Does the action with an empty subscriber list. The original subscriber list is put back when done.
+            </summary>
+            <remarks>
+            Used by unit testing.
+            </remarks>
+        </member>
+        <member name="T:Epicor.ServiceModel.Channels.CompressionBindingElement">
+            <summary>
+            Implements the compression encoder binding element setting up WCF bindings
+            </summary>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.CompressionBindingElement.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Epicor.ServiceModel.Channels.CompressionBindingElement"/> class.
+            </summary>
+        </member>
+        <member name="T:Epicor.ServiceModel.Channels.CompressionEncoder">
+            <summary>
+            Implements a binary compression encoder for WCF services
+            </summary>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.CompressionEncoder.#ctor(System.ServiceModel.Channels.MessageEncoder)">
+            <summary>
+            Creates the compression encoder with the supplied encoder as an inner encoder
+            </summary>
+            <param name="innerEncoder">The inner encoder</param>
+        </member>
+        <member name="P:Epicor.ServiceModel.Channels.CompressionEncoder.ContentType">
+            <summary>
+            Returns the content type for messages
+            </summary>
+        </member>
+        <member name="P:Epicor.ServiceModel.Channels.CompressionEncoder.MediaType">
+            <summary>
+            Returns the inner encoder's media type
+            </summary>
+        </member>
+        <member name="P:Epicor.ServiceModel.Channels.CompressionEncoder.MessageVersion">
+            <summary>
+            Returns the inner encoders message version
+            </summary>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.CompressionEncoder.ReadMessage(System.ArraySegment{System.Byte},System.ServiceModel.Channels.BufferManager,System.String)">
+            <summary>
+            Decodes a message from compressed bytes held in a memory buffer
+            </summary>
+            <param name="buffer">The memory buffer containing the message bytes</param>
+            <param name="bufferManager">The buffer manager for the memory buffer</param>
+            <param name="contentType">The content type received from the sender</param>
+            <returns></returns>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.CompressionEncoder.ReadMessage(System.IO.Stream,System.Int32,System.String)">
+            <summary>
+            Reads a message passed as a chunked stream.  Not yet supported in Ice 3.
+            </summary>
+            <param name="stream">The stream containing the received message</param>
+            <param name="maxSizeOfHeaders">The maximum size of the message headers</param>
+            <param name="contentType">The content type received from the sender</param>
+            <returns>The received message</returns>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.CompressionEncoder.WriteMessage(System.ServiceModel.Channels.Message,System.Int32,System.ServiceModel.Channels.BufferManager,System.Int32)">
+            <summary>
+            Encodes an outbound message
+            </summary>
+            <param name="message">The message to be transmitted</param>
+            <param name="maxMessageSize">The maximum message size allowed by the writer quotas</param>
+            <param name="bufferManager">The buffer manager for the message buffer</param>
+            <param name="messageOffset">The offset for the message stream</param>
+            <returns>A byte array containing the encoded message</returns>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.CompressionEncoder.WriteMessage(System.ServiceModel.Channels.Message,System.IO.Stream)">
+            <summary>
+            Write the message in streaming mode.  Not yet supported for Ice 3.
+            </summary>
+            <param name="message">The message to be transmitted</param>
+            <param name="stream">The output stream</param>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.CompressionEncoder.CompressBuffer(System.ArraySegment{System.Byte},System.ServiceModel.Channels.BufferManager,System.Int32)">
+            <summary>
+            Compresses a byte array into a new byte array
+            </summary>
+            <param name="buffer">The input byte array</param>
+            <param name="bufferManager">The buffer manager for the message</param>
+            <param name="messageOffset">The message offset</param>
+            <returns>A byte array containing the compressed buffer</returns>
+        </member>
+        <member name="M:Epicor.ServiceModel.Channels.CompressionEncoder.DecompressBuffer(System.ArraySegment{System.Byte},System.ServiceModel.Channels.BufferManager)">
+            <summary>
+            Decompresses a byte array and returns the result in a new buffer
+            </summary>
+            <param name="inBuffer">The buffer containing the compressed bytes</param>
+            <param name="bufferManager">The buffer manager</param>
+            <returns>A new byte array containing the decompressed bytes</returns>
+        </member>
+        <member name="T:Epicor.ServiceModel.Channels.CompressionFactory">
+            <summary>
+            Used internally by WCF to create the compression encoder
+            </summary>
+        </member>
+        <member name="T:Epicor.ServiceModel.StandardBindings.InternalBinaryHttp">
+            <summary>
+            Creates some standard WCF binding configurations for BinaryHttp bindings.
+            </summary>
+        </member>
+        <member name="T:Epicor.ServiceModel.StandardBindings.NetTcp">
+            <summary>
+            Creates some standard WCF binding configurations for NetTcp bindings.
+            </summary>
+        </member>
+        <member name="M:Epicor.ServiceModel.StandardBindings.NetTcp.UsernameSslChannel(System.Boolean)">
+            <summary>
+            Creates a netTcp binding secured by username/password transport protection
+            </summary>
+            <param name="compressed">Set to true to enable the compression encoder</param>
+            <returns>A netTcp binding</returns>
+        </member>
+        <member name="M:Epicor.ServiceModel.StandardBindings.NetTcp.Windows(System.Boolean)">
+            <summary>
+            Creates a netTcp binding secured by windows transport protection
+            </summary>
+            <param name="compressed">Set to true to enable the compression encoder</param>
+            <returns>A netTcp binding</returns>
+        </member>
+        <member name="M:Epicor.ServiceModel.StandardBindings.NetTcp.Sts(System.Uri,System.Boolean)">
+            <summary>
+            Create a netTcp binding secured using WS-SecureConversation
+            </summary>
+            <param name="issuerAddress">The URI of the security token issuer</param>
+            <param name="compressed">Set to TRUE to enable the compression encoder</param>
+            <returns>The netTcp binding</returns>
+        </member>
+        <member name="M:Epicor.ServiceModel.StandardBindings.NetTcp.UsernameWindowsChannel(System.Boolean)">
+            <summary>
+            Creates a netTcp binding secured by username/password and windows for transport protection
+            </summary>
+            <param name="compressed">Set to true to enable the compression encoder</param>
+            <returns>A netTcp binding</returns>
+        </member>
+        <member name="T:Epicor.ServiceModel.StandardBindings.WsHttp">
+            <summary>
+            Provides some common WCF bindings for HTTP.
+            </summary>
+        </member>
+        <member name="M:Epicor.ServiceModel.StandardBindings.WsHttp.UsernameCredential(System.Boolean)">
+            <summary>
+            Creates an HTTP/S binding secured using a username/password
+            </summary>
+            <param name="compressed">Set to true to enable the compression encoder</param>
+            <returns>A WCF binding object</returns>
+        </member>
+        <member name="M:Epicor.ServiceModel.StandardBindings.WsHttp.Windows(System.Boolean)">
+            <summary>
+            Creates an HTTP channel secured using Windows authentication (SSO)
+            </summary>
+            <param name="compressed">Set to true to enable the compression encoder</param>
+            <returns>A WCF binding</returns>
+        </member>
+        <member name="T:Epicor.ServiceModel.StandardBindings.WsHttps">
+            <summary>
+            Provides some common WCF bindings for HTTP
+            </summary>
+        </member>
+        <member name="M:Epicor.ServiceModel.StandardBindings.WsHttps.UsernameSslChannel(System.Boolean)">
+            <summary>
+            Creates an HTTP/S binding secured using a username/password 
+            </summary>
+            <param name="compressed">Set to true to enable the compression encoder</param>
+            <returns>A WCF binding object</returns>
+        </member>
+        <member name="M:Epicor.ServiceModel.StandardBindings.WsHttps.Windows(System.Boolean)">
+            <summary>
+            Creates an HTTP channel secured using Windows authentication (SSO)
+            </summary>
+            <param name="compressed">Set to true to enable the compression encoder</param>
+            <returns>A WCF binding</returns>
+        </member>
+        <member name="T:Ice.Shared.Wcf.Concurrency.RWLockSlimWrapper">
+            <summary>
+            Base class for managing <see cref="T:System.Threading.ReaderWriterLockSlim"/> objects.
+            </summary>
+            <remarks>
+            Duplicated from Epicor.ServiceModel.
+            </remarks>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Concurrency.RWLockSlimWrapper.#ctor(System.Threading.ReaderWriterLockSlim)">
+            <summary>
+            Assigns the lock object
+            </summary>
+            <param name="locks">The lock object</param>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Concurrency.RWLockSlimWrapper.ReleaseReadLock">
+            <summary>
+            Releases the ReadLock is necessary
+            </summary>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Concurrency.RWLockSlimWrapper.ReleaseUpgradeableReadLock">
+            <summary>
+            Releases the upgradeable read lock is necessary
+            </summary>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Concurrency.RWLockSlimWrapper.ReleaseWriteLock">
+            <summary>
+            Releases the upgradeable write lock is necessary
+            </summary>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Concurrency.RWLockSlimWrapper.ReleaseLock">
+            <summary>
+            Releases all locks currently held
+            </summary>
+        </member>
+        <member name="T:Ice.Shared.Wcf.Concurrency.WriteLock">
+            <summary>
+            Disposable wrapper for acquiring an write lock from a <see cref="T:System.Threading.ReaderWriterLockSlim"/> object.
+            </summary>
+            <remarks>
+            Duplicated from Epicor.ServiceModel.
+            </remarks>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Concurrency.WriteLock.#ctor(System.Threading.ReaderWriterLockSlim)">
+            <summary>
+            Attempts to acquire an write lock. Waits indefinitely.
+            </summary>
+            <param name="theLock">The lock object.</param>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Concurrency.WriteLock.#ctor(System.Threading.ReaderWriterLockSlim,System.Int32)">
+            <summary>
+            Attempts to acquire an write lock.
+            </summary>
+            <param name="theLock">The lock object.</param>
+            <param name="msWait">Timeout in milliseconds.</param>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Concurrency.WriteLock.#ctor(System.Threading.ReaderWriterLockSlim,System.TimeSpan)">
+            <summary>
+            Attempts to acquire a write lock.
+            </summary>
+            <param name="theLock">The lock object.</param>
+            <param name="tsWait">A TimeSpan representing the how long to wait for the lock to be acquired.</param>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Concurrency.WriteLock.Dispose(System.Boolean)">
+            <summary>
+            Releases any locks held on the <see cref="T:System.Threading.ReaderWriterLockSlim"/> object.
+            </summary>
+        </member>
+        <member name="T:Ice.Shared.Wcf.Hashing.ByteBuffer">
+            <summary>
+            Holds a byte buffer of data that gets overwritten each time it is filled up.
+            </summary>
+            <remarks>
+            Duplicated from Epicor.ServiceModel.
+            </remarks>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Hashing.ByteBuffer.#ctor(System.Int32,System.Action)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ice.Shared.Wcf.Hashing.ByteBuffer" /> class.
+            </summary>
+            <param name="bufferSize">Size of the buffer.</param>
+            <param name="bufferFullCallback">The buffer full callback.</param>
+        </member>
+        <member name="P:Ice.Shared.Wcf.Hashing.ByteBuffer.BufferSize">
+            <summary>
+            Gets the size of the buffer.
+            </summary>
+            <value>
+            The size of the buffer.
+            </value>
+        </member>
+        <member name="P:Ice.Shared.Wcf.Hashing.ByteBuffer.Length">
+            <summary>
+            Gets the current number of bytes in the buffer.
+            </summary>
+            <value>
+            The current number of bytes in the buffer.
+            </value>
+        </member>
+        <member name="P:Ice.Shared.Wcf.Hashing.ByteBuffer.Buffer">
+            <summary>
+            Gets the buffer.
+            </summary>
+            <value>
+            The buffer.
+            </value>
+            <remarks>
+            <para>This is the "live" buffer. Do not make any changes to it. The value changes as items are added to it.</para>
+            <para>Use the <see cref="P:Ice.Shared.Wcf.Hashing.ByteBuffer.Length"/> property to determine how many of the bytes are valid. If you are getting
+            a partial buffer then the end bytes are left over from the previous buffer.</para>
+            </remarks>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Hashing.ByteBuffer.Write(System.Byte)">
+            <summary>
+            Writes the byte to the buffer.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Hashing.ByteBuffer.Write(System.Byte[])">
+            <summary>
+            Writes the bytes to the buffer.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Hashing.ByteBuffer.Write(System.Int32)">
+            <summary>
+            Writes the integer to the buffer.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Hashing.ByteBuffer.Write(System.String)">
+            <summary>
+            Writes the string to the buffer.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Hashing.ByteBuffer.Write(System.Guid)">
+            <summary>
+            Writes the GUID to the buffer.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="T:Ice.Shared.Wcf.Hashing.BytetoUInt64Converter">
+            <remarks>
+            Duplicated from Epicor.ServiceModel.
+            </remarks>
+        </member>
+        <member name="T:Ice.Shared.Wcf.Hashing.MurmurHash3Writer">
+            <summary>
+            Computes a MurmurHash3 hash using the data written to it.
+            </summary>
+            <remarks>
+            Duplicated from Epicor.ServiceModel.
+            </remarks>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Hashing.MurmurHash3Writer.#ctor(System.Int32,System.UInt32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ice.Shared.Wcf.Hashing.MurmurHash3Writer" /> class.
+            </summary>
+        </member>
+        <member name="P:Ice.Shared.Wcf.Hashing.MurmurHash3Writer.BufferWriter">
+            <summary>
+            Gets the buffer writer.
+            </summary>
+            <value>
+            The buffer writer.
+            </value>
+            <remarks>All data to be hashed is written through the <see cref="T:Ice.Shared.Wcf.Hashing.ByteBuffer"/>.</remarks>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Hashing.MurmurHash3Writer.ComputeInt32">
+            <summary>
+            Computes the hash.
+            </summary>
+            <returns>The hash.</returns>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Hashing.MurmurHash3Writer.ComputeUInt32">
+            <summary>
+            Computes the hash.
+            </summary>
+            <returns>The hash.</returns>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Hashing.MurmurHash3Writer.ComputeInt64">
+            <summary>
+            Computes the hash.
+            </summary>
+            <returns>The hash.</returns>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Hashing.MurmurHash3Writer.ComputeUInt64">
+            <summary>
+            Computes the hash.
+            </summary>
+            <returns>The hash.</returns>
+        </member>
+        <member name="M:Ice.Shared.Wcf.Hashing.MurmurHash3Writer.ComputeUInt128">
+            <summary>
+            Computes the hash.
+            </summary>
+            <returns>The hash.</returns>
+        </member>
+        <member name="T:Ice.Shared.Wcf.Resources.Strings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Ice.Shared.Wcf.Resources.Strings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Ice.Shared.Wcf.Resources.Strings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Ice.Shared.Wcf.Resources.Strings.InsufficientMemoryToRead">
+            <summary>
+              Looks up a localized string similar to Unable to read the message due to insufficient memory. Size of message = {0}.
+            </summary>
+        </member>
+        <member name="P:Ice.Shared.Wcf.Resources.Strings.InsufficientMemoryToWrite">
+            <summary>
+              Looks up a localized string similar to Unable to write message due to insufficient memory..
+            </summary>
+        </member>
+        <member name="T:Ice.Shared.Wcf.StandardBindings.BindingName">
+            <summary>
+            Built-in Epicor Bindings
+            </summary>
+        </member>
+        <member name="F:Ice.Shared.Wcf.StandardBindings.BindingName.UsernameSslChannel">
+            <summary>
+            Legacy NET.TCP binding - Authentication: Epicor user name - Channel encrypted via SSL. Custom compression.
+            </summary>
+        </member>
+        <member name="F:Ice.Shared.Wcf.StandardBindings.BindingName.Windows">
+            <summary>
+            Legacy NET.TCP binding - Authentication: Windows Credentials - Channel encrypted via Windows Trusted Domain between Client and Server. Custom compression.
+            </summary>
+        </member>
+        <member name="F:Ice.Shared.Wcf.StandardBindings.BindingName.UsernameWindowsChannel">
+            <summary>
+            Legacy NET.TCP binding - Authentication: Epicor user name - Channel encrypted via Windows Trusted Domain between Client and Server. Custom compression.
+            </summary>
+        </member>
+        <member name="F:Ice.Shared.Wcf.StandardBindings.BindingName.TcpBinaryUsernameSslChannel">
+            <summary>
+             NET.TCP - Authentication: Epicor user name - Channel encrypted via SSL
+            </summary>
+        </member>
+        <member name="F:Ice.Shared.Wcf.StandardBindings.BindingName.TcpBinaryWindowsChannel">
+            <summary>
+            NET.TCP - Authentication: Windows Credentials - Channel encrypted via Windows Trusted Domain between Client and Server
+            </summary>
+        </member>
+        <member name="F:Ice.Shared.Wcf.StandardBindings.BindingName.TcpBinaryUsernameWindowsChannel">
+            <summary>
+            NET.TCP - Authentication: Epicor user name - Channel encrypted via Windows Trusted Domain between Client and Server
+            </summary>
+        </member>
+        <member name="F:Ice.Shared.Wcf.StandardBindings.BindingName.HttpBinaryUsernameSslChannel">
+            <summary>
+             HTTP - Authentication: Epicor user name - Channel not encrypted - SOAP SSL message security is used-
+            </summary>
+        </member>
+        <member name="F:Ice.Shared.Wcf.StandardBindings.BindingName.HttpsBinaryWindowsChannel">
+            <summary>
+            HTTPS - Authentication: Windows credentials - Channel encrypted via HTTPS
+            </summary>
+        </member>
+        <member name="F:Ice.Shared.Wcf.StandardBindings.BindingName.HttpsBinaryUsernameChannel">
+            <summary>
+            HTTPS - Authentication: Epicor user name - Channel encrypted via HTTPS
+            </summary>
+        </member>
+        <member name="F:Ice.Shared.Wcf.StandardBindings.BindingName.HttpsOffloadBinaryUserNameChannel">
+            <summary>
+            HTTPS - Authentication: Epicor user name - Channel encrypted via HTTPS - SSL Offloading is done on proxy
+            </summary>
+        </member>
+        <member name="F:Ice.Shared.Wcf.StandardBindings.BindingName.HttpsBinaryAzureChannel">
+            <summary>
+            HTTPS - Authentication: Azure Active Directory Token in the header - Channel encrypted via HTTPS
+            </summary>
+        </member>
+        <member name="F:Ice.Shared.Wcf.StandardBindings.BindingName.HttpsBinaryIdpChannel">
+            <summary>
+            HTTPS - Authentication: Identity provider token in the header - Channel encrypted via HTTPS
+            </summary>
+        </member>
+        <member name="F:Ice.Shared.Wcf.StandardBindings.BindingName.HttpsOffloadBinaryAzureChannel">
+            <summary>
+            HTTPS - Authentication: Azure Active Directory Token in the header - Channel not encrypted - SSL Offloading must be done on proxy
+            </summary>
+        </member>
+        <member name="F:Ice.Shared.Wcf.StandardBindings.BindingName.HttpsOffloadBinaryIdpChannel">
+            <summary>
+            HTTPS - Authentication: Identity provider token in the header - Channel not encrypted - SSL Offloading must be done on proxy
+            </summary>
+        </member>
+        <member name="M:Ice.Shared.Wcf.StandardBindings.BindingName.IsAzure(System.String)">
+            <summary>
+            Determines whether the binding uses Azure Active Directory.
+            </summary>
+            <param name="bindingName">The binding name.</param>
+            <returns><c>true</c> if the binding uses Azure Active Directory.</returns>
+        </member>
+        <member name="M:Ice.Shared.Wcf.StandardBindings.BindingName.IsSingleSignOn(System.String)">
+            <summary>
+            Determines whether the binding supports single sign on.
+            </summary>
+            <param name="bindingName">The binding name.</param>
+            <returns><c>true</c> if the binding supports single sign on.</returns>
+        </member>
+        <member name="M:Ice.Shared.Wcf.StandardBindings.BindingName.IsIdP(System.String)">
+            <summary>
+            Determines whether the binding uses Identity Provider.
+            </summary>
+            <param name="bindingName">The binding name.</param>
+            <returns><c>true</c> if the binding uses Identity Provider.</returns>
+        </member>
+        <member name="M:Ice.Shared.Wcf.StandardBindings.BindingName.IsSsl(System.String)">
+            <summary>
+            Determines whether the specified binding is SSL.
+            </summary>
+            <param name="bindingName">The binding name.</param>
+            <returns><c>true</c> if the binding uses SSL.</returns>
+        </member>
+        <member name="M:Ice.Shared.Wcf.StandardBindings.BindingName.IsSslUsed(System.ServiceModel.Channels.CustomBinding)">
+            <summary>
+            Returns true if Soap SSL is used in binding
+            </summary>
+            <param name="customBinding"></param>
+            <returns><c>true</c> if SSL is used.</returns>
+        </member>
+        <member name="M:Ice.Shared.Wcf.WcfHelper.GetUriPath(System.Type)">
+            <summary>
+            Returns the Standard (relative) service path for a service.
+            </summary>
+            <param name="contractType">The contract type</param>
+            <returns>The relative path for the service</returns>
+        </member>
+    </members>
+</doc>

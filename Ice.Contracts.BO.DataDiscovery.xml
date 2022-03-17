@@ -1,0 +1,354 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ice.Contracts.BO.DataDiscovery</name>
+    </assembly>
+    <members>
+        <member name="T:Ice.BO.DataDiscovery.CompanyListInfo">
+            <summary>
+            Represents the company list info
+            </summary>
+        </member>
+        <member name="P:Ice.BO.DataDiscovery.CompanyListInfo.Company">
+            <summary>
+            Gets or sets the Company Id
+            </summary>
+        </member>
+        <member name="P:Ice.BO.DataDiscovery.CompanyListInfo.Name">
+            <summary>
+            Gets or sets the Company Name
+            </summary>
+        </member>
+        <member name="P:Ice.BO.DataDiscovery.CompanyListInfo.EwaUrl">
+            <summary>
+            Gets or sets the Ewa Url
+            </summary>
+        </member>
+        <member name="T:Ice.BO.DataDiscoveryDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Ice.BO.DataDiscoveryDataSet.EDDUserFileDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Ice.BO.DataDiscoveryDataSet.EDDUserCompDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Ice.BO.DataDiscoveryDataSet.EDDUserFileRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Ice.BO.DataDiscoveryDataSet.EDDUserCompRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Ice.BO.DataDiscoveryDataSet.EDDUserFileRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Ice.BO.DataDiscoveryDataSet.EDDUserCompRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Ice.BO.DataDiscoveryListDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Ice.BO.DataDiscoveryListDataSet.EDDUserFileListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Ice.BO.DataDiscoveryListDataSet.EDDUserFileListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Ice.BO.DataDiscoveryListDataSet.EDDUserFileListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Ice.BO.UpdExtDataDiscoveryDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Ice.BO.UpdExtDataDiscoveryDataSet.EDDUserFileDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Ice.BO.UpdExtDataDiscoveryDataSet.EDDUserCompDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Ice.BO.UpdExtDataDiscoveryDataSet.EDDUserFileRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Ice.BO.UpdExtDataDiscoveryDataSet.EDDUserCompRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Ice.BO.UpdExtDataDiscoveryDataSet.EDDUserFileRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Ice.BO.UpdExtDataDiscoveryDataSet.EDDUserCompRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.DataDiscoverySvcContract.GetEddUserInformation">
+            <summary>
+            Uses the security credentials to retrieve the UserFile record
+            </summary>
+            <returns>UserFile record of the logged in user</returns>
+        </member>
+        <member name="M:Ice.Contracts.DataDiscoverySvcContract.GetCompanyList">
+            <summary>
+            Gets the list of Companies
+            </summary>
+            <returns>the list of Companies</returns>
+        </member>
+        <member name="M:Ice.Contracts.DataDiscoverySvcContract.GetDataDiscoveryUrl">
+            <summary>
+            Gets the DataDiscovery Url and validates the EDD application state is Online
+            </summary>
+            <returns>The DataDiscovery Url when EDD application state is online</returns>
+        </member>
+        <member name="M:Ice.Contracts.DataDiscoverySvcContract.SaveDataDiscoveryUrl(System.String)">
+            <summary>
+            Saves the data discovery url and creates Menu Row
+            </summary>
+            <param name="url">The data discovery url</param>
+        </member>
+        <member name="M:Ice.Contracts.DataDiscoverySvcContract.GetNewEDDUserFile(Ice.Tablesets.DataDiscoveryTableset@)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.DataDiscoverySvcContract.GetNewEDDUserComp(Ice.Tablesets.DataDiscoveryTableset@,System.String)">
+            <summary>
+            Inserts a new row in the DataSet with defaults populated.
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.DataDiscoverySvcContract.DeleteByID(System.String)">
+            <summary>
+            Deletes a row given its ID.
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.DataDiscoverySvcContract.GetByID(System.String)">
+            <summary>
+            Returns a DataSet given the primary key.
+            </summary>
+            <returns>The DataSet.</returns>
+        </member>
+        <member name="M:Ice.Contracts.DataDiscoverySvcContract.GetList(System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a list of rows that satisfy the where clause.
+            </summary>
+            <param name="whereClause">An expression used to filter the rows. Can be left blank for all rows.</param>
+            <param name="pageSize">The maximum number of rows to return. Leave as zero for no maximum.</param>
+            <param name="absolutePage">Page of rows to return.</param>
+            <param name="morePages">Whether there are more pages of rows available.</param>
+            <returns>The list DataSet.</returns>
+        </member>
+        <member name="M:Ice.Contracts.DataDiscoverySvcContract.GetRows(System.String,System.String,System.Int32,System.Int32,System.Boolean@)">
+            <summary>
+            Returns a dataset containing all rows that satisfy the where clauses.
+            </summary>
+            <returns>The full DataSet.</returns>
+        </member>
+        <member name="M:Ice.Contracts.DataDiscoverySvcContract.GetBySysRowID(System.Guid)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.DataDiscoverySvcContract.GetBySysRowIDs(System.Collections.Generic.List{System.Guid})">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Ice.Contracts.DataDiscoverySvcContract.Update(Ice.Tablesets.DataDiscoveryTableset@)">
+            <summary>
+            Commits the DataSet changes to the data store.
+            </summary>
+            <param name="ds">The full DataSet.</param>
+        </member>
+        <member name="M:Ice.Contracts.DataDiscoverySvcContract.UpdateExt(Ice.Tablesets.UpdExtDataDiscoveryTableset@,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            Apply input data to service by calling GetByID/GetNew/Update methods.
+            </summary>
+            <returns>The dataset with list of errors occurred during update process.</returns>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.UserID">
+            <summary>
+            User ID
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.Name">
+            <summary>
+            User Name
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.EMailAddress">
+            <summary>
+            User's e-mail address.
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.SecurityMgr">
+            <summary>
+            Indicates that the user account has security maintenance privileges.
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.CurComp">
+            <summary>
+            Represents the current or Last company logged on to by the user. This is used as default next time they log on.  
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.GroupList">
+            <summary>
+            List of security groups the user belongs to.
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.SysRowID">
+            <summary>
+            Unique identifier for this row. The value is a GUID.
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.PwdChangeRequestOn">
+            <summary>
+            PwdChangeRequestOn
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.ExternalIdentity">
+            <summary>
+            ExternalIdentity
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.SSRSReportDesigner">
+            <summary>
+            SSRSReportDesigner
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.DefaultHomepageLayoutID">
+            <summary>
+            DefaultHomepageLayoutID
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.AccessScopeID">
+            <summary>
+            AccessScopeID
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.IoTUser">
+            <summary>
+            IoTUser
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.IoTAdministrator">
+            <summary>
+            IoTAdministrator
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.DMTUser">
+            <summary>
+            DMTUser
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.EVAUser">
+            <summary>
+            EVAUser
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.DefaultFormType">
+            <summary>
+            DefaultFormType
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.HideKineticToast">
+            <summary>
+            HideKineticToast
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.InstallationID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.BitFlag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.RowMod">
+            <summary>
+            RowMod
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileRow.SpecifiedProperties">
+            <summary>
+            SpecifiedProperties
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserCompRow.UserID">
+            <summary>
+            UserID
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserCompRow.Company">
+            <summary>
+            Company Identifier.
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserCompRow.SysRowID">
+            <summary>
+            Unique identifier for this row. The value is a GUID.
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserCompRow.BitFlag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserCompRow.RowMod">
+            <summary>
+            RowMod
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserCompRow.SpecifiedProperties">
+            <summary>
+            SpecifiedProperties
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileListRow.SysRowID">
+            <summary>
+            Unique identifier for this row. The value is a GUID.
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileListRow.RowMod">
+            <summary>
+            RowMod
+            </summary>
+        </member>
+        <member name="P:Ice.Tablesets.EDDUserFileListRow.SpecifiedProperties">
+            <summary>
+            SpecifiedProperties
+            </summary>
+        </member>
+    </members>
+</doc>
