@@ -119,7 +119,7 @@ namespace Intransit_Inventory_Sync
             //Create object to use Epicor Business Objects
             var objInventoryQtyAdj = Ice.Lib.Framework.WCFServiceSupport.CreateImpl<Erp.Proxy.BO.InventoryQtyAdjImpl>(epicorSession, Erp.Proxy.BO.InventoryQtyAdjImpl.UriPath);
 
-            EventLog.WriteEntry(EventTitle, "Timer Elapsed", EventLogEntryType.Information);
+            EventLog.WriteEntry(EventTitle, "Timer Elapsed ", EventLogEntryType.Information);
 
             SqlConnection con1 = new SqlConnection("Data Source=HFIOCSQLTEST01;Initial Catalog=002;Integrated Security=True");
             using (SqlConnection conn = con1)
